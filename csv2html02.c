@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
     while ((c = getc(fp)) != EOF) {
         if (c == '"') {
             dq ^= 1;
-            printDecimal(dq);
+            printf("%d", dq);
         } else {
             putchar(c);
         }
