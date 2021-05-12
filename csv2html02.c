@@ -39,12 +39,9 @@ int changeFileName(char *path, int pathmax) {
             return -1;
         }
     }
-    // . の直後をナル文字にする
-    path[i + 1] = '\0';
-    // . の後ろをhtmlにする
-    addMoji(path, "html", pathmax);
-    // 変換チェック
-    printf("Output file path: %s\n", path);
+    path[i + 1] = '\0';                   // . の直後をナル文字にする
+    addMoji(path, "html", pathmax);       // . の後ろをhtmlにする
+    printf("出力ファイル名: %s\n", path); // 変換チェック
     return 0;
 }
 
@@ -107,14 +104,13 @@ int main(int argc, char **argv) {
         return -1;
     }
     puts(html);
-    changeFileName(fname, FILENAME_MAX);
-    // 書込み用で開く
-    if ((fp = fopen("test01.html", "w")) == NULL) {
-        printf("%s can\'t be opened.\n", fname);
+    // HTMLファイル名に変更, 失敗した場合
+    if (changeFileName(fname, FILENAME_MAX) < 0) return -1;
+    if ((fp = fopen(fname, "w")) == NULL) { // 書き込み用で開く
+        printf("\a%s can\'t be opened.\n", fname);
         return -1;
     }
-    // 開けたらファイル書込み
-    fprintf(fp, "%s", html);
-    fclose(fp);
+    fprintf(fp, "%s", html);  // 開けたらファイルに書き込む
+    fclose(fp);               // ファイルを閉じる
     return 0;
 }
