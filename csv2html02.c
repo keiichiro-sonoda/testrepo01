@@ -55,14 +55,16 @@ int main(int argc, char **argv) {
     }
     FILE *fp;                          // ファイルのポインタ
     char c;                            // 読み込む文字
+    char fname[FILENAME_MAX];          // ファイル名 (入力, 出力)
     char html[HTML_MAX] = HTML_HEAD;   // 出力文字列 (冒頭はマクロで定義)
     size_t html_len = strlen(html);    // 出力文字列の長さ (ナル文字を含まない)
     int dq_open = 0;                   // ダブルクォートが開いているフラグ
     int dq_first = 1;                  // 最初のダブルクォートかどうか
     // 最初の引数をファイル名に使う
+    snprintf(fname, FILENAME_MAX, "%s", argv[1]);
     // ファイルを読込用で開き, 失敗した場合
-    if ((fp = fopen(argv[1], "r")) == NULL) {
-        printf("\a%s can\'t be opened.\n", argv[1]);
+    if ((fp = fopen(fname, "r")) == NULL) {
+        printf("\a%s can\'t be opened.\n", fname);
         return -1;
     }
     // ファイルの終わりまで繰り返し
@@ -83,7 +85,7 @@ int main(int argc, char **argv) {
                 html_len = addMoji(html, "</td><td>", HTML_MAX);
                 dq_first = 1;      // フラグリセット
             } else if (c == '\n') { // 改行
-                html_len = addMoji(html, "</td></tr><tr><td>", HTML_MAX); break;
+                html_len = addMoji(html, "</td></tr><tr><td>", HTML_MAX);
             } else { // それ以外
                 html[html_len++] = c;
             }
@@ -91,12 +93,28 @@ int main(int argc, char **argv) {
         // 出力文字列の長さがオーバーした場合
         if (html_len >= HTML_MAX) {
             puts("\a長さオーバー");
-            html[html_len - 1] = '\0';
+            html[HTML_MAX - 1] = '\0';
             puts(html);
             return -1;
         }
     }
     fclose(fp); // ファイルを閉じる
+    // 最後の文字列を追加
+    if ((html_len = addMoji(html, "</td></tr></table></html>", HTML_MAX)) >= HTML_MAX) {
+        puts("\a長さオーバー");
+        html[HTML_MAX - 1] = '\0';
+        puts(html);
+        return -1;
+    }
     puts(html);
+    changeFileName(fname, FILENAME_MAX);
+    // 書込み用で開く
+    if ((fp = fopen("test01.html", "w")) == NULL) {
+        printf("%s can\'t be opened.\n", fname);
+        return -1;
+    }
+    // 開けたらファイル書込み
+    fprintf(fp, "%s", html);
+    fclose(fp);
     return 0;
 }
