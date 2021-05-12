@@ -211,7 +211,7 @@ int input(char *buf, int bufmax) {
 }
 
 // こっからメイン
-int main(void) {
+int main(int argc, char **argv) {
     FILE *fp;                // FILE型構造体
     char line[LIN_MAX];      // ファイルの各行の文字列を一時的に保存
     int row_count = 0;       // 行数のカウント
@@ -221,12 +221,12 @@ int main(void) {
     char html[HTML_MAX] = {'\0'};
     // ファイルのパス
     char fname[LIN_MAX];
-    // 標準入力からファイルのパスを入力
-    input(fname, LIN_MAX);
+    // 最初の引数をファイル名に使う
+    snprintf(fname, LIN_MAX, "%s", argv[0]);
+    puts(fname);
     // ファイルを読込用で開く
-    fp = fopen(fname, "r");
     // 失敗した場合
-    if (fp == NULL) {
+    if ((fp = fopen(fname, "r")) == NULL) {
         printf("%s can\'t be opened.\n", fname);
         return -1;
     }
