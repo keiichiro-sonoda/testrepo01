@@ -41,25 +41,21 @@ int changeFileName(char *path, int pathmax) {
     return 0;
 }
 
-// こっからメイン
 int main(int argc, char **argv) {
-    if (argc != 2) {
+    if (argc != 2) { // コマンド以外の引数は1つだけ指定
         puts("引数にcsvファイルのパスを1つ指定してください。");
         return -1;
     }
     FILE *fp;                // FILE型構造体
     // 出力文字列(初期はナル文字だけ)
     char html[HTML_MAX] = {'\0'};
-    // ファイルのパス
-    char fname[LIN_MAX];
     // 最初の引数をファイル名に使う
-    snprintf(fname, LIN_MAX, "%s", argv[1]);
-    // ファイルを読込用で開く
-    // 失敗した場合
-    if ((fp = fopen(fname, "r")) == NULL) {
-        printf("%s can\'t be opened.\n", fname);
+    // ファイルを読込用で開き, 失敗した場合
+    if ((fp = fopen(argv[1], "r")) == NULL) {
+        printf("%s can\'t be opened.\n", argv[1]);
         return -1;
     }
+    fclose(fp); // ファイルを閉じる
     puts("終わり");
     return 0;
 }
