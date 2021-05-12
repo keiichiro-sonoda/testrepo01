@@ -45,7 +45,7 @@ int changeFileName(char *path, int pathmax) {
 
 int main(int argc, char **argv) {
     if (argc != 2) { // コマンド以外の引数は1つだけ指定
-        puts("引数にcsvファイルのパスを1つ指定してください。");
+        puts("\a引数にcsvファイルのパスを1つ指定してください。");
         return -1;
     }
     FILE *fp;                // ファイルのポインタ
@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
     // 最初の引数をファイル名に使う
     // ファイルを読込用で開き, 失敗した場合
     if ((fp = fopen(argv[1], "r")) == NULL) {
-        printf("%s can\'t be opened.\n", argv[1]);
+        printf("\a%s can\'t be opened.\n", argv[1]);
         return -1;
     }
     // ファイルの終わりまで繰り返し
