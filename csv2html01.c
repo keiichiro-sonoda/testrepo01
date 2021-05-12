@@ -152,7 +152,7 @@ int addMoji(char *dst, const char *src, int dstmax) {
 // 引数には表，行数，出力文字列，出力文字列の最大長を与える
 int arrayToHtml(Gyo *l_table, int l_row_count, char *l_html, int l_html_max) {
     int i, j;
-    // 冒頭の文字列(表のフォーマットなど)
+    // 冒頭の文字列 (表のフォーマットなども指定)
     addMoji(l_html, "<html><style>table{table-layout:fixed;border-collapse:collapse;color:black;width:80%;}table td {border: 1px solid black;}</style><table>", l_html_max);
     // 行数繰り返し
     for (i = 0; i < l_row_count; i++) {
@@ -221,7 +221,7 @@ int main(void) {
     char html[HTML_MAX] = {'\0'};
     // ファイルのパス
     char fname[LIN_MAX];
-    // 標準入力からファイル名を入力
+    // 標準入力からファイルのパスを入力
     input(fname, LIN_MAX);
     // ファイルを読込用で開く
     fp = fopen(fname, "r");
