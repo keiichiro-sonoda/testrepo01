@@ -1,4 +1,3 @@
-// 2020年度に提出したコード
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
