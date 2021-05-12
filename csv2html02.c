@@ -104,6 +104,8 @@ int main(int argc, char **argv) {
         return -1;
     }
     puts(html);
+    // 長さチェック
+    printf("HTMLの長さ: %ld \n", html_len);
     // HTMLファイル名に変更, 失敗した場合
     if (changeFileName(fname, FILENAME_MAX) < 0) return -1;
     if ((fp = fopen(fname, "w")) == NULL) { // 書き込み用で開く
