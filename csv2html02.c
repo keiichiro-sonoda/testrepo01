@@ -5,12 +5,13 @@
 #include <string.h>
 
 #define LIN_MAX  256   // 読み込むファイルの1行当たりの最大文字数
-#define HTML_MAX 1024  // HTML文字列の最大長
+#define HTML_MAX 399  // HTML文字列の最大長
 
 // HTMLの冒頭の文字列
 #define HTML_HEAD "<html><style>table{table-layout:fixed;border-collapse:collapse;color:black;width:80%;}table td {border: 1px solid black;}</style><table><tr><td>"
 
-#define printDecimal(x) printf("%ld\n", (long)x); // 10進数を表示するマクロ
+#define printDecimal(x) printf("%ld\n", (long)x);    // 10進数を表示するマクロ
+#define printUDecimal(x) printf("%lu\n", (u_long)x); // 符号なし10進数を表示するマクロ
 
 // ある文字列に文字列を付け加える
 // 結合後の文字列の最大長も渡す (ナル文字含む)
@@ -89,7 +90,7 @@ int main(int argc, char **argv) {
         }
         // 出力文字列の長さがオーバーした場合
         if (html_len >= HTML_MAX) {
-            puts("\a長さオーバー");
+            printf("\a長さオーバー: %lu\n", html_len);
             html[HTML_MAX - 1] = '\0';
             puts(html);
             return -1;
@@ -98,7 +99,7 @@ int main(int argc, char **argv) {
     fclose(fp); // ファイルを閉じる
     // 最後の文字列を追加
     if ((html_len = addMoji(html, "</td></tr></table></html>", HTML_MAX)) >= HTML_MAX) {
-        puts("\a長さオーバー");
+        printf("\a長さオーバー: %lu\n", html_len);
         html[HTML_MAX - 1] = '\0';
         puts(html);
         return -1;
