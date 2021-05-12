@@ -222,8 +222,9 @@ int main(int argc, char **argv) {
     // ファイルのパス
     char fname[LIN_MAX];
     // 最初の引数をファイル名に使う
-    snprintf(fname, LIN_MAX, "%s", argv[0]);
+    snprintf(fname, LIN_MAX, "%s", argv[1]);
     puts(fname);
+    printf("%d\n", argc);
     // ファイルを読込用で開く
     // 失敗した場合
     if ((fp = fopen(fname, "r")) == NULL) {
