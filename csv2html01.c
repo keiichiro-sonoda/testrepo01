@@ -212,6 +212,10 @@ int input(char *buf, int bufmax) {
 
 // こっからメイン
 int main(int argc, char **argv) {
+    if (argc != 2) {
+        puts("引数にcsvファイルのパスを1つ指定してください。");
+        return -1;
+    }
     FILE *fp;                // FILE型構造体
     char line[LIN_MAX];      // ファイルの各行の文字列を一時的に保存
     int row_count = 0;       // 行数のカウント
@@ -223,8 +227,6 @@ int main(int argc, char **argv) {
     char fname[LIN_MAX];
     // 最初の引数をファイル名に使う
     snprintf(fname, LIN_MAX, "%s", argv[1]);
-    puts(fname);
-    printf("%d\n", argc);
     // ファイルを読込用で開く
     // 失敗した場合
     if ((fp = fopen(fname, "r")) == NULL) {
