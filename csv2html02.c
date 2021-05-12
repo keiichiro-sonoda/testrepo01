@@ -46,7 +46,8 @@ int main(int argc, char **argv) {
         puts("引数にcsvファイルのパスを1つ指定してください。");
         return -1;
     }
-    FILE *fp;                // FILE型構造体
+    FILE *fp;                // ファイルのポインタ
+    char c;                  // 読み込む文字
     // 出力文字列(初期はナル文字だけ)
     char html[HTML_MAX] = {'\0'};
     // 最初の引数をファイル名に使う
@@ -55,7 +56,11 @@ int main(int argc, char **argv) {
         printf("%s can\'t be opened.\n", argv[1]);
         return -1;
     }
+    // ファイルの終わりまで繰り返し
+    while ((c = getc(fp)) != EOF) {
+        putchar(c);
+    }
     fclose(fp); // ファイルを閉じる
-    puts("終わり");
+    puts("\n終わり");
     return 0;
 }
