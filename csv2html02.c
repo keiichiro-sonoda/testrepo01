@@ -48,9 +48,10 @@ int main(int argc, char **argv) {
         puts("\a引数にcsvファイルのパスを1つ指定してください。");
         return -1;
     }
-    FILE *fp;                // ファイルのポインタ
-    char c;                  // 読み込む文字
+    FILE *fp;                     // ファイルのポインタ
+    char c;                       // 読み込む文字
     char html[HTML_MAX] = {'\0'}; // 出力文字列 (初期はナル文字だけ)
+    int dq;                       // ダブルクォートが開いているフラグ
     // 最初の引数をファイル名に使う
     // ファイルを読込用で開き, 失敗した場合
     if ((fp = fopen(argv[1], "r")) == NULL) {
@@ -59,7 +60,11 @@ int main(int argc, char **argv) {
     }
     // ファイルの終わりまで繰り返し
     while ((c = getc(fp)) != EOF) {
-        putchar(c);
+        if (c == '"') {
+            dq ^= 1;
+        } else {
+            putchar(c);
+        }
     }
     putchar(10);
     fclose(fp); // ファイルを閉じる
