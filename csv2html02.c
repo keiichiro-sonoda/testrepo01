@@ -8,7 +8,7 @@
 #define HTML_MAX 1024  // HTML文字列の最大長
 
 // HTMLの冒頭の文字列
-#define HEAD "<html><style>table{table-layout:fixed;border-collapse:collapse;color:black;width:80%;}table td {border: 1px solid black;}</style><table>"
+#define HTML_HEAD "<html><style>table{table-layout:fixed;border-collapse:collapse;color:black;width:80%;}table td {border: 1px solid black;}</style><table><tr><td>"
 
 #define printDecimal(x) printf("%ld\n", (long)x); // 10進数を表示するマクロ
 
@@ -53,10 +53,12 @@ int main(int argc, char **argv) {
         puts("\a引数にcsvファイルのパスを1つ指定してください。");
         return -1;
     }
-    FILE *fp;                     // ファイルのポインタ
-    char c;                       // 読み込む文字
-    char html[HTML_MAX] = HEAD;   // 出力文字列 (冒頭はマクロで定義)
-    int dq;                       // ダブルクォートが開いているフラグ
+    FILE *fp;                          // ファイルのポインタ
+    char c;                            // 読み込む文字
+    char html[HTML_MAX] = HTML_HEAD;   // 出力文字列 (冒頭はマクロで定義)
+    size_t html_len = strlen(html);    // 出力文字列の長さ (ナル文字を含まない)
+    int dq_open = 0;                   // ダブルクォートが開いているフラグ
+    int dq_first = 1;                  // 最初のダブルクォートかどうか
     // 最初の引数をファイル名に使う
     // ファイルを読込用で開き, 失敗した場合
     if ((fp = fopen(argv[1], "r")) == NULL) {
@@ -65,18 +67,36 @@ int main(int argc, char **argv) {
     }
     // ファイルの終わりまで繰り返し
     while ((c = getc(fp)) != EOF) {
-        if (c == '"') {
-            dq ^= 1;
-            printf("%d", dq);
-        } else {
-            putchar(c);
+        if (dq_open) { // ダブルクォートが開いている場合
+            if (c == '"') dq_open = 0; // ダブルクォートが出たら閉じる
+            else html[html_len++] = c; // それ以外は全て文字として扱う
+        }
+        else { // ダブルクォートが開いていない場合
+            if (c == '"') { // ダブルクォートが出たら開く
+                dq_open = 1;
+                if (dq_first) {   // 最初のダブルクォートの場合
+                    dq_first = 0; // フラグを下ろす
+                } else {                  // 最初のダブルクォートでない場合
+                    html[html_len++] = c; // ダブルクォートを文字として扱う
+                }
+            } else if (c == ',') { // カンマが出たら要素を区切る
+                html_len = addMoji(html, "</td><td>", HTML_MAX);
+                dq_first = 1;      // フラグリセット
+            } else if (c == '\n') { // 改行
+                html_len = addMoji(html, "</td></tr><tr><td>", HTML_MAX); break;
+            } else { // それ以外
+                html[html_len++] = c;
+            }
+        }
+        // 出力文字列の長さがオーバーした場合
+        if (html_len >= HTML_MAX) {
+            puts("\a長さオーバー");
+            html[html_len - 1] = '\0';
+            puts(html);
+            return -1;
         }
     }
-    putchar(10);
     fclose(fp); // ファイルを閉じる
-    char str1[7] = "abc", str2[5] = "def";
-    printDecimal(addMoji(str1, str2, 3));
-    puts(str1);
     puts(html);
     return 0;
 }
