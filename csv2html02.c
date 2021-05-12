@@ -1,9 +1,14 @@
+// csvファイルをhtmlファイルに変換
+// csvファイルのフォーマットは満たしているものとする
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #define LIN_MAX  256   // 読み込むファイルの1行当たりの最大文字数
 #define HTML_MAX 1024  // HTML文字列の最大長
+
+// HTMLの冒頭の文字列
+#define HEAD "<html><style>table{table-layout:fixed;border-collapse:collapse;color:black;width:80%;}table td {border: 1px solid black;}</style><table>"
 
 #define printDecimal(x) printf("%ld\n", (long)x); // 10進数を表示するマクロ
 
@@ -50,7 +55,7 @@ int main(int argc, char **argv) {
     }
     FILE *fp;                     // ファイルのポインタ
     char c;                       // 読み込む文字
-    char html[HTML_MAX] = {'\0'}; // 出力文字列 (初期はナル文字だけ)
+    char html[HTML_MAX] = HEAD;   // 出力文字列 (冒頭はマクロで定義)
     int dq;                       // ダブルクォートが開いているフラグ
     // 最初の引数をファイル名に使う
     // ファイルを読込用で開き, 失敗した場合
@@ -72,6 +77,6 @@ int main(int argc, char **argv) {
     char str1[7] = "abc", str2[5] = "def";
     printDecimal(addMoji(str1, str2, 3));
     puts(str1);
-    puts("終わり");
+    puts(html);
     return 0;
 }
