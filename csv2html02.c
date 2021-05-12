@@ -5,17 +5,19 @@
 #define LIN_MAX  256   // 読み込むファイルの1行当たりの最大文字数
 #define HTML_MAX 1024  // HTML文字列の最大長
 
+#define printDecimal(x) printf("%ld\n", (long)x); // 10進数を表示するマクロ
+
 // ある文字列に文字列を付け加える
-// 結合後の文字列の最大長も渡す(ナル文字含む)
+// 結合後の文字列の最大長も渡す (ナル文字含む)
 int addMoji(char *dst, const char *src, int dstmax) {
-    // 結合後の文字列が最大長とぴったり，またはそれより大きかったらエラー
-    if (strlen(dst) + strlen(src) >= dstmax) {
+    size_t l;
+    // 結合後の文字列が最大長と等しい，またはそれより大きかったらエラー
+    if ((l = strlen(dst) + strlen(src)) >= dstmax) {
         printf("over\n");
         return -1;
     }
-    // 結合
-    strcat(dst, src);
-    return 0;
+    strcat(dst, src); // 結合
+    return l;         // 成功したら長さを返す
 }
 
 // 入力されたファイル名(パス)の拡張子を.htmlに変更
@@ -48,8 +50,7 @@ int main(int argc, char **argv) {
     }
     FILE *fp;                // ファイルのポインタ
     char c;                  // 読み込む文字
-    // 出力文字列(初期はナル文字だけ)
-    char html[HTML_MAX] = {'\0'};
+    char html[HTML_MAX] = {'\0'}; // 出力文字列 (初期はナル文字だけ)
     // 最初の引数をファイル名に使う
     // ファイルを読込用で開き, 失敗した場合
     if ((fp = fopen(argv[1], "r")) == NULL) {
@@ -60,7 +61,11 @@ int main(int argc, char **argv) {
     while ((c = getc(fp)) != EOF) {
         putchar(c);
     }
+    putchar(10);
     fclose(fp); // ファイルを閉じる
-    puts("\n終わり");
+    char str1[7] = "abc", str2[5] = "def";
+    printDecimal(addMoji(str1, str2, 7));
+    puts(str1);
+    puts("終わり");
     return 0;
 }
