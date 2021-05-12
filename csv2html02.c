@@ -7,7 +7,8 @@
 #define HTML_MAX 1024  // HTML文字列の最大長
 
 // HTMLの冒頭の文字列
-#define HTML_HEAD "<html><style>table{table-layout:fixed;border-collapse:separate;color:black;width:80%;}table td{border:3px double black;}</style><table><tr><td>"
+//#define HTML_HEAD "<html><style>table{table-layout:fixed;border-collapse:separate;color:black;width:80%;}table td{border:3px double black;}</style><table><tr><td>"
+#define HTML_HEAD "<html><table border=1><tr><td>"
 
 #define printDecimal(x) printf("%ld\n", (long)x);    // 10進数を表示するマクロ
 #define printUDecimal(x) printf("%lu\n", (u_long)x); // 符号なし10進数を表示するマクロ
