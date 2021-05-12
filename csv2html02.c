@@ -13,7 +13,7 @@ int addMoji(char *dst, const char *src, int dstmax) {
     size_t l;
     // 結合後の文字列が最大長と等しい，またはそれより大きかったらエラー
     if ((l = strlen(dst) + strlen(src)) >= dstmax) {
-        printf("over\n");
+        printf("\aover\n");
         return -1;
     }
     strcat(dst, src); // 結合
@@ -64,7 +64,7 @@ int main(int argc, char **argv) {
     putchar(10);
     fclose(fp); // ファイルを閉じる
     char str1[7] = "abc", str2[5] = "def";
-    printDecimal(addMoji(str1, str2, 7));
+    printDecimal(addMoji(str1, str2, 3));
     puts(str1);
     puts("終わり");
     return 0;
