@@ -59,7 +59,7 @@ int main(int argc, char **argv) {
     size_t html_len = strlen(html);    // 出力文字列の長さ (ナル文字を含まない)
     int dq_open = 0;                   // ダブルクォートが開いているフラグ
     int dq_first = 1;                  // 最初のダブルクォートかどうか
-    int new_line = 1;                  // 改行直後
+    int new_line = 0;                  // 改行直後
     // 最初の引数をファイル名に使う
     snprintf(fname, FILENAME_MAX, "%s", argv[1]);
     // ファイルを読込用で開き, 失敗した場合
