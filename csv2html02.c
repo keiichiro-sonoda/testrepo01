@@ -69,6 +69,7 @@ int main(int argc, char **argv) {
     while ((c = getc(fp)) != EOF) {
         if (dq_open) { // ダブルクォートが開いている場合
             if (c == '"') dq_open = 0; // ダブルクォートが出たら閉じる
+            else if (c == '\n') html_len = addMoji(html, "<br>", HTML_MAX); // 改行が出たら <br> に置換
             else html[html_len++] = c; // それ以外は全て文字として扱う
         }
         else { // ダブルクォートが開いていない場合
