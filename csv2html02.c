@@ -36,7 +36,8 @@ int changeFileName(char *path, int pathmax) {
     // i をナル文字のひとつ前からデクリメント
     for (i = l - 1; path[i] != '.'; i--) {
         // 途中で / が出たら拡張子が無いのでエラー
-        if (path[i] == '/') {
+        // インデックスが負になる場合もエラー
+        if (path[i] == '/' || i < 0) {
             return -1;
         }
     }
