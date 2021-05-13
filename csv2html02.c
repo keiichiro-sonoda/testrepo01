@@ -10,17 +10,17 @@
 //#define HTML_HEAD "<html><style>table{table-layout:fixed;border-collapse:separate;color:black;width:80%;}table td{border:3px double black;}</style><table><tr><td>"
 #define HTML_HEAD "<html><table border=1><tr><td>"
 
-#define printDecimal(x) printf("%ld\n", (long)x);    // 10進数を表示するマクロ
-#define printUDecimal(x) printf("%lu\n", (u_long)x); // 符号なし10進数を表示するマクロ
+#define printDecimal(x) printf("%ld\n", (long)x);                // 10進数を表示するマクロ
+#define printUDecimal(x) printf("%lu\n", (unsigned long long)x); // 符号なし10進数を表示するマクロ
 
 // ある文字列に文字列を付け加える
 // 結合後の文字列の最大長も渡す (ナル文字含む)
-int addMoji(char *dst, const char *src, int dstmax) {
+size_t addMoji(char *dst, const char *src, int dstmax) {
     size_t l;
     // 結合後の文字列が最大長と等しい，またはそれより大きかったらエラー
     if ((l = strlen(dst) + strlen(src)) >= dstmax) {
         printf("\aover\n");
-        return -1;
+        return -1;    // 返り値は size_t 型の最大値
     }
     strcat(dst, src); // 結合
     return l;         // 成功したら長さを返す
@@ -115,5 +115,6 @@ int main(int argc, char **argv) {
     }
     fprintf(fp, "%s", html);  // 開けたらファイルに書き込む
     fclose(fp);               // ファイルを閉じる
+    printUDecimal(-1);
     return 0;
 }
