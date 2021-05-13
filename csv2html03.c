@@ -5,7 +5,7 @@
 #include <string.h>
 
 // HTMLの冒頭の文字列
-#define HTML_HEAD "<html><table border=1><tr><td>"
+#define HTML_HEAD   "<html>\n<table border=1>\n\t<tr>\n\t\t<td>"
 
 #define printDecimal(x) printf("%ld\n", (long)x);                // 10進数を表示するマクロ
 #define printUDecimal(x) printf("%lu\n", (unsigned long long)x); // 符号なし10進数を表示するマクロ
@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
     int new_line = 0;                  // 改行直後
     // 最初の引数をファイル名に使う
     snprintf(fnamer, FILENAME_MAX, "%s", argv[1]);
-    // HTMLファイル名に変更, 失敗した場合
+    // HTMLファイル名を作成し, 失敗した場合
     if (makeOutFileName(fnamew, fnamer, FILENAME_MAX) < 0) return -1;
     // ファイルを読込用で開き, 失敗した場合
     if ((fpr = fopen(fnamer, "r")) == NULL) {
@@ -76,7 +76,7 @@ int main(int argc, char **argv) {
         if (new_line) { // 改行直後がナル文字なら, 最終行にカウントしない
             if (c == '\0') break;
             else {      // ナル文字以外なら普通に改行
-                fprintf(fpw, "</td></tr><tr><td>");
+                fprintf(fpw, "</td>\n\t</tr>\n\t<tr>\n\t\t<td>");
             }
             new_line = 0; // フラグを下ろす
         }
@@ -97,7 +97,7 @@ int main(int argc, char **argv) {
                     fputc('"', fpw);      // ダブルクォートを文字として扱う
                 }
             } else if (c == ',') {  // カンマが出たら要素を区切る
-                fprintf(fpw, "</td><td>");
+                fprintf(fpw, "</td>\n\t\t<td>");
                 dq_first = 1;       // フラグリセット
             } else if (c == '\n') { // 改行
                 new_line = 1;       // 改行フラグを立てる
