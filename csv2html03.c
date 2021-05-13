@@ -31,8 +31,7 @@ size_t addMoji(char *dst, const char *src, int dstmax) {
 int makeOutFileName(char *dst, const char *src, int dstmax) {
     int i, l;
     char c;
-    snprintf(dst, dstmax, "%s", src); // 対象にそのままコピー
-    puts(dst);
+    l = snprintf(dst, dstmax, "%s", src); // コピーして長さも取得
     // i をナル文字のひとつ前からデクリメント
     for (i = l - 1; (c = dst[i]) != '.'; i--) {
         // 途中で / が出たら拡張子が無いのでエラー
