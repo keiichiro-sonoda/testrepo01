@@ -59,6 +59,7 @@ int main(int argc, char **argv) {
     size_t html_len = strlen(html);    // 出力文字列の長さ (ナル文字を含まない)
     int dq_open = 0;                   // ダブルクォートが開いているフラグ
     int dq_first = 1;                  // 最初のダブルクォートかどうか
+    int new_line = 1;                  // 改行直後
     // 最初の引数をファイル名に使う
     snprintf(fname, FILENAME_MAX, "%s", argv[1]);
     // ファイルを読込用で開き, 失敗した場合
@@ -68,6 +69,11 @@ int main(int argc, char **argv) {
     }
     // ファイルの終わりまで繰り返し
     while ((c = getc(fp)) != EOF) {
+        if (new_line) { // 改行直後がナル文字なら, 最終行にカウントしない
+            if (c == '\0') break;
+            else html_len = addMoji(html, "</td></tr><tr><td>", HTML_MAX);
+            new_line = 0;
+        }
         if (dq_open) { // ダブルクォートが開いている場合
             if (c == '"') dq_open = 0; // ダブルクォートが出たら閉じる
             else if (c == '\n') html_len = addMoji(html, "<br>", HTML_MAX); // 改行が出たら <br> に置換
@@ -83,9 +89,9 @@ int main(int argc, char **argv) {
                 }
             } else if (c == ',') { // カンマが出たら要素を区切る
                 html_len = addMoji(html, "</td><td>", HTML_MAX);
-                dq_first = 1;      // フラグリセット
+                dq_first = 1;       // フラグリセット
             } else if (c == '\n') { // 改行
-                html_len = addMoji(html, "</td></tr><tr><td>", HTML_MAX);
+                new_line = 1;       // 改行フラグを立てる
             } else { // それ以外
                 html[html_len++] = c;
             }
