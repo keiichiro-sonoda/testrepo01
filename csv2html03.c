@@ -107,7 +107,7 @@ int main(int argc, char **argv) {
         }
     }
     // 最後の文字列を追加
-    fprintf(fpw, "</td></tr></table></html>");
+    fprintf(fpw, "</td>\n\t</tr>\n</table>\n</html>");
 
     fclose(fpr);               // 読込み用ファイルを閉じる
     fclose(fpw);               // 書込み用ファイルを閉じる
