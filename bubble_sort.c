@@ -24,8 +24,8 @@ void showIntArray(const int *A, int n) {
 // おそらく課題11の通り
 void bubbleSort(int *A, int n) {
     int i, j, tmp;
-    for (i = 0; i < n - 2; i++) {
-        for (j = i; j < n - 2; j++) {
+    for (i = 0; i < n - 1; i++) {
+        for (j = i; j < n - 1; j++) {
             if (A[j] > A[j + 1]) {
                 swapArray(A, j, j + 1, tmp);
             }
