@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
+#define SEED 189U
 
 // 配列の要素を入れ替えるマクロ
 // 一時変数は呼び出し元で用意しておく
@@ -18,6 +21,7 @@ void showIntArray(const int *A, int n) {
 }
 
 // バブルソート関数
+// おそらく課題11の通り
 void bubbleSort(int *A, int n) {
     int i, j, tmp;
     for (i = 0; i < n - 2; i++) {
@@ -29,15 +33,30 @@ void bubbleSort(int *A, int n) {
     }
 }
 
+// バブルソート関数
+// 昇順ソート
+void bubbleSort2(int *A, int n) {
+    int i, j, tmp;
+    for (i = n - 1; i > 0; i--) {
+        for (j = 0; j < i; j++) {
+            if (A[j] > A[j + 1]) {
+                swapArray(A, j, j + 1, tmp);
+            }
+        }
+    }
+}
+
 int main(void) {
     int n = 16;
     int A[n]; // テスト配列
-    srand(123U);
+    // srand(SEED);
+    srand((unsigned)time(NULL));
     for (int i = 0; i < n; i++) {
         A[i] = rand() % 100;
     }
     showIntArray(A, n);
-    bubbleSort(A, n);
+    // bubbleSort(A, n);
+    bubbleSort2(A, n);
     showIntArray(A, n);
     return 0;
 }
