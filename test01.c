@@ -20,7 +20,7 @@ void printBin32(u_int x) {
 u_int channelNoise(u_int x, int nc, double e_prob) {
     u_int y = 0;
     for (int i = 0; i < nc; i++) {
-        y |= (getBit(x, i) & (randDouble() <= e_prob)) << i;
+        y |= (getBit(x, i) ^ (randDouble() <= e_prob)) << i;
     }
     return y;
 }
