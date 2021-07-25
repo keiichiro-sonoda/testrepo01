@@ -155,28 +155,14 @@ int compareErrorProb(int loop, double e_prob) {
 }
 
 int main(void) {
+    int i, j;
+    double e_prob;
     srand((unsigned)time(NULL));
-    // 4ビットに制限
-    // u_int tm, c, r, rm;
-    // tm = rand() & 0b1111;
-    // puts("繰り返し符号");
-    // printBinN(tm, 4);
-    // c = encRepCode3(tm, 4);
-    // printBinN(c, 12);
-    // r = channelNoise(c, 12, 0.1);
-    // printBinN(r, 12);
-    // rm = decRepCode3(r, 4);
-    // printBinN(rm, 4);
-    // puts("ハミング符号");
-    // tm = rand() & 0b1111;
-    // printBinN(tm, 4);
-    // c = encHamCode7_4(tm);
-    // printBinN(c, 7);
-    // r = channelNoise(c, 7, 0.1);
-    // printBinN(r, 7);
-    // rm = decHamCode7_4(r);
-    // printBinN(rm, 4);
-    for (int i = 0; i < 10; i++)
-        compareErrorProb(1000000, 0.1);
+    for (i = 0; i < 11; i++) {
+        e_prob = i * 0.05; // 5% ずつ動かす
+        for (j = 0; j < 1; j++) {
+            compareErrorProb(1000000, e_prob);
+        }
+    }
     return 0;
 }
