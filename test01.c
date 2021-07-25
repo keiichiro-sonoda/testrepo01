@@ -106,7 +106,7 @@ u_int decHamming7_4(u_int rsv) {
         case 0b110: err = 0b0000001; break;
         default   : err = 0b1111111; break; // でたらめ
     }
-    return rsv ^ err;
+    return (rsv ^ err) >> 3;
 }
 
 int main(void) {
@@ -133,6 +133,6 @@ int main(void) {
     r = channelNoise(c, 7, 0.1);
     printBinN(r, 7);
     rm = decHamming7_4(r);
-    printBinN(r, 4);
+    printBinN(rm, 4);
     return 0;
 }
