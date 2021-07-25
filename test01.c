@@ -88,14 +88,25 @@ u_int makeParityHamming7_4(u_int msg) {
 // (7, 4)ハミング符号の復号関数
 // 入力は7ビット, 出力は4ビットに固定
 u_int decHamming7_4(u_int rsv) {
-    u_int msg, syndrome;
+    u_int syndrome, err;
     // パリティの再計算
     u_int recal_parity = makeParityHamming7_4(rsv >> 3);
     // 受信パリティとの比較
     syndrome = recal_parity ^ (rsv & 0b111);
     printBinN(syndrome, 3);
-    msg = 0;
-    return msg;
+    // シンドロームからエラー位置の特定
+    switch (syndrome) {
+        case 0b000: err = 0b0000000; break;
+        case 0b100: err = 0b1000000; break;
+        case 0b010: err = 0b0100000; break;
+        case 0b001: err = 0b0010000; break;
+        case 0b111: err = 0b0001000; break;
+        case 0b011: err = 0b0000100; break;
+        case 0b101: err = 0b0000010; break;
+        case 0b110: err = 0b0000001; break;
+        default   : err = 0b1111111; break; // でたらめ
+    }
+    return rsv ^ err;
 }
 
 int main(void) {
@@ -122,5 +133,6 @@ int main(void) {
     r = channelNoise(c, 7, 0.1);
     printBinN(r, 7);
     rm = decHamming7_4(r);
+    printBinN(r, 4);
     return 0;
 }
