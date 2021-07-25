@@ -8,6 +8,12 @@
 // double型の乱数を生成 [0.0, 1.0]
 #define randDouble() ((double)rand() / RAND_MAX)
 
+// (7, 4)ハミング符号の符号化関数
+// 入力は4ビット, 出力は7ビットに固定
+// ほとんどパリティ作成なので, マクロに変更
+// unsigned int型の入力が望ましい
+#define encHamming7_4(msg) (((msg) << 3) | makeParityHamming7_4(msg))
+
 // 32ビットのバイナリ表示
 void printBin32(u_int x) {
     for (int i = 31; i >= 0; i--) {
@@ -77,12 +83,6 @@ u_int makeParityHamming7_4(u_int msg) {
     parity |= (b1 ^ b2 ^ b4) << 1;
     parity |= b1 ^ b2 ^ b3;
     return parity;
-}
-
-// (7, 4)ハミング符号の符号化関数
-// 入力は4ビット, 出力は7ビットに固定
-u_int encHamming7_4(u_int msg) {
-    return (msg << 3) | makeParityHamming7_4(msg);
 }
 
 // (7, 4)ハミング符号の復号関数
