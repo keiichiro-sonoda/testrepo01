@@ -122,42 +122,42 @@ u_int decHamCode7_4(u_int rsv) {
 int compareErrorProb(int loop, double e_prob) {
     int i;
     u_int tmsg, tcode, rcode, rmsg;
-    int ne_err;
+    int ne_err = 0;
     for (i = 0; i < loop; i++) {
         // 符号化なしの場合
         tmsg = rand4Bit();
         rmsg = channelNoise(tmsg, 4, e_prob);
+        // エラー数のカウント
         if (tmsg != rmsg) {
-
+            ne_err++;
         }
     }
+    printf("%d\n", ne_err);
     return 0;
 }
 
 int main(void) {
     srand((unsigned)time(NULL));
     // 4ビットに制限
-    u_int tm, c, r, rm;
-    tm = rand() & 0b1111;
-    puts("繰り返し符号");
-    printBinN(tm, 4);
-    c = encRepCode3(tm, 4);
-    // printBin32(c);
-    printBinN(c, 12);
-    r = channelNoise(c, 12, 0.1);
-    // printBin32(r);
-    printBinN(r, 12);
-    rm = decRepCode3(r, 4);
-    printBinN(rm, 4);
-    puts("ハミング符号");
-    tm = rand() & 0b1111;
-    // tm = 0b1001;
-    printBinN(tm, 4);
-    c = encHamCode7_4(tm);
-    printBinN(c, 7);
-    r = channelNoise(c, 7, 0.1);
-    printBinN(r, 7);
-    rm = decHamCode7_4(r);
-    printBinN(rm, 4);
+    // u_int tm, c, r, rm;
+    // tm = rand() & 0b1111;
+    // puts("繰り返し符号");
+    // printBinN(tm, 4);
+    // c = encRepCode3(tm, 4);
+    // printBinN(c, 12);
+    // r = channelNoise(c, 12, 0.1);
+    // printBinN(r, 12);
+    // rm = decRepCode3(r, 4);
+    // printBinN(rm, 4);
+    // puts("ハミング符号");
+    // tm = rand() & 0b1111;
+    // printBinN(tm, 4);
+    // c = encHamCode7_4(tm);
+    // printBinN(c, 7);
+    // r = channelNoise(c, 7, 0.1);
+    // printBinN(r, 7);
+    // rm = decHamCode7_4(r);
+    // printBinN(rm, 4);
+    compareErrorProb(10000, 0.1);
     return 0;
 }
