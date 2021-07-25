@@ -14,7 +14,7 @@ void printBin32(u_int x) {
 }
 
 // 繰り返し符号を生成して返す
-u_int repCode3(u_int m, int n) {
+u_int encRepCode3(u_int m, int n) {
     u_int code = 0;
     int i, j, b;
     for (i = 0; i < n; i++) {
@@ -23,7 +23,6 @@ u_int repCode3(u_int m, int n) {
             code |= b << (i * 3 + j);
         }
     }
-    printBin32(code);
     return code;
 }
 
@@ -33,7 +32,7 @@ int main(void) {
     u_int m = rand() & 0b1111;
     u_int c;
     printBin32(m);
-    c = repCode3(m, 4);
+    c = encRepCode3(m, 4);
     printBin32(c);
     return 0;
 }
