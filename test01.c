@@ -68,7 +68,7 @@ int main(void) {
     printBin32(c);
     m = decRepCode3(c, 4);
     printBin32(m);
-    r = channelNoise(c, 12, 1);
+    r = channelNoise(c, 12, 0.5);
     printBin32(r);
     return 0;
 }
