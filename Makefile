@@ -1,2 +1,2 @@
-hello.exe: hello.c
-	gcc hello.c -o hello.exe
+hello: hello.c
+	gcc hello.c -o hello -Wall
