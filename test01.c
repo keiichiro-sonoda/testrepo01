@@ -122,17 +122,27 @@ u_int decHamCode7_4(u_int rsv) {
 int compareErrorProb(int loop, double e_prob) {
     int i;
     u_int tmsg, tcode, rcode, rmsg;
-    int ne_err = 0;
+    int ne_err = 0, rep_err = 0;
     for (i = 0; i < loop; i++) {
-        // 符号化なしの場合
+        // メッセージは乱数で作って共有
         tmsg = rand4Bit();
+
+        // 符号化なし
         rmsg = channelNoise(tmsg, 4, e_prob);
         // エラー数のカウント
         if (tmsg != rmsg) {
             ne_err++;
         }
+        
+        // (3, 1)繰り返し符号
+        tcode = encRepCode3(tmsg, 4);
+        rcode = channelNoise(tcode, 12, e_prob);
+        rmsg = decRepCode3(rcode, 4);
+        if (tmsg != rmsg) {
+            rep_err++;
+        }
     }
-    printf("%d\n", ne_err);
+    printf("%d %d\n", ne_err, rep_err);
     return 0;
 }
 
