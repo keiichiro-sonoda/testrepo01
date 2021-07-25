@@ -5,12 +5,24 @@
 // 指定したビットを取得
 #define getBit(x, n) (((x) >> (n)) & 1)
 
+// double型の乱数を生成 [0.0, 1.0]
+#define randDouble() ((double)rand() / RAND_MAX)
+
 // 32ビットのバイナリ表示
 void printBin32(u_int x) {
     for (int i = 31; i >= 0; i--) {
         printf("%d", getBit(x, i));
     }
     putchar(10);
+}
+
+// 各ビット毎のエラー率が一定の通信路
+u_int channelNoise(u_int x, int nc, double e_prob) {
+    u_int y = 0;
+    for (int i = 0; i < nc; i++) {
+        y |= getBit(x, i) << i;
+    }
+    return y;
 }
 
 // (3, 1)繰り返し符号の符号化関数
@@ -48,7 +60,7 @@ int main(void) {
     srand((unsigned)time(NULL));
     // 4ビットに制限
     u_int m = rand() & 0b1111;
-    u_int c;
+    u_int c, r;
     printBin32(m);
     c = encRepCode3(m, 4);
     printBin32(c);
@@ -56,5 +68,7 @@ int main(void) {
     printBin32(c);
     m = decRepCode3(c, 4);
     printBin32(m);
+    r = channelNoise(c, 12, 0.1);
+    printBin32(r);
     return 0;
 }
