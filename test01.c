@@ -8,6 +8,9 @@
 // double型の乱数を生成 [0.0, 1.0]
 #define randDouble() ((double)rand() / RAND_MAX)
 
+// 4ビットの乱数を生成
+#define rand4Bit() (rand() & 0b1111)
+
 // 各ビットのエラー率が一定の通信路
 // 引数はチャンネルの入力, 入力長, エラー率
 // エラー率は double 型
@@ -17,7 +20,7 @@
 // 入力は4ビット, 出力は7ビットに固定
 // ほとんどパリティ作成なので, マクロに変更
 // unsigned int型の入力が望ましい
-#define encHamming7_4(msg) (((msg) << 3) | makeParityHamming7_4(msg))
+#define encHamCode7_4(msg) (((msg) << 3) | makeParityHamCode7_4(msg))
 
 // 32ビットのバイナリ表示
 void printBin32(u_int x) {
@@ -82,7 +85,7 @@ u_int decRepCode3(u_int rsv, int nm) {
 
 // パリティビットの作成
 // 入力4ビット, パリティ3ビット
-u_int makeParityHamming7_4(u_int msg) {
+u_int makeParityHamCode7_4(u_int msg) {
     u_int parity;
     u_char b1, b2, b3, b4;
     b1 = getBit(msg, 3);
@@ -97,11 +100,11 @@ u_int makeParityHamming7_4(u_int msg) {
 
 // (7, 4)ハミング符号の復号関数
 // 入力は7ビット, 出力は4ビットに固定
-u_int decHamming7_4(u_int rsv) {
+u_int decHamCode7_4(u_int rsv) {
     u_int err;
     // パリティを再計算し, 受信パリティと比較
     // シンドロームからエラー位置の特定
-    switch (makeParityHamming7_4(rsv >> 3) ^ (rsv & 0b111)) {
+    switch (makeParityHamCode7_4(rsv >> 3) ^ (rsv & 0b111)) {
         case 0b000: err = 0b0000000; break;
         case 0b111: err = 0b1000000; break;
         case 0b011: err = 0b0100000; break;
@@ -113,6 +116,22 @@ u_int decHamming7_4(u_int rsv) {
         default   : err = 0b1111111; break; // でたらめ
     }
     return (rsv ^ err) >> 3;
+}
+
+// エラー率の比較
+int compareErrorProb(int loop, double e_prob) {
+    int i;
+    u_int tmsg, tcode, rcode, rmsg;
+    int ne_err;
+    for (i = 0; i < loop; i++) {
+        // 符号化なしの場合
+        tmsg = rand4Bit();
+        rmsg = channelNoise(tmsg, 4, e_prob);
+        if (tmsg != rmsg) {
+
+        }
+    }
+    return 0;
 }
 
 int main(void) {
@@ -134,11 +153,11 @@ int main(void) {
     tm = rand() & 0b1111;
     // tm = 0b1001;
     printBinN(tm, 4);
-    c = encHamming7_4(tm);
+    c = encHamCode7_4(tm);
     printBinN(c, 7);
     r = channelNoise(c, 7, 0.1);
     printBinN(r, 7);
-    rm = decHamming7_4(r);
+    rm = decHamCode7_4(r);
     printBinN(rm, 4);
     return 0;
 }
