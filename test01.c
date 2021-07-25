@@ -89,10 +89,9 @@ u_int makeParityHamming7_4(u_int msg) {
 // 入力は7ビット, 出力は4ビットに固定
 u_int decHamming7_4(u_int rsv) {
     u_int err;
-    // パリティの再計算
-    u_int recal_parity = makeParityHamming7_4(rsv >> 3);
+    // パリティを再計算し, 受信パリティと比較
     // シンドロームからエラー位置の特定
-    switch (recal_parity ^ (rsv & 0b111)) {
+    switch (makeParityHamming7_4(rsv >> 3) ^ (rsv & 0b111)) {
         case 0b000: err = 0b0000000; break;
         case 0b111: err = 0b1000000; break;
         case 0b011: err = 0b0100000; break;
