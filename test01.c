@@ -176,6 +176,6 @@ int main(void) {
     // printBinN(r, 7);
     // rm = decHamCode7_4(r);
     // printBinN(rm, 4);
-    compareErrorProb(10000, 0.1);
+    compareErrorProb(1000000, 0.1);
     return 0;
 }
