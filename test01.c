@@ -49,6 +49,9 @@ int main(void) {
     printBin32(m);
     c = encRepCode3(m, 4);
     printBin32(c);
-    printBin32(decRepCode3(c, 4));
+    c = rand() & 0xfff;
+    printBin32(c);
+    m = decRepCode3(c, 4);
+    printBin32(m);
     return 0;
 }
