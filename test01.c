@@ -30,13 +30,22 @@ void printBinN(u_int x, int n) {
     putchar(10);
 }
 
-// 各ビット毎のエラー率が一定の通信路
-u_int channelNoise(u_int x, int nc, double e_prob) {
-    u_int y = 0;
-    for (int i = 0; i < nc; i++) {
-        y |= (getBit(x, i) ^ (randDouble() <= e_prob)) << i;
+// エラービット列の作成
+// ビット毎独立で, 同じ確率でエラーを発生させる
+u_int makeErrorBits(int n, double e_prob) {
+    u_int err = 0;
+    for (int i = 0; i < n; i++) {
+        err <<= 1;
+        // 比較演算で得られるブール値をそのまま加える
+        // 乱数がエラー率以下なら1, それ以外は0
+        err |= (randDouble() <= e_prob);
     }
-    return y;
+    return err;
+}
+
+// 各ビットのエラー率が一定の通信路
+u_int channelNoise(u_int x, int nc, double e_prob) {
+    return x ^ makeErrorBits(nc, e_prob);
 }
 
 // (3, 1)繰り返し符号の符号化関数
