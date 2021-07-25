@@ -13,7 +13,8 @@ void printBin32(u_int x) {
     putchar(10);
 }
 
-// 繰り返し符号を生成して返す
+// (3, 1)繰り返し符号の符号化関数
+//  第2引数はメッセージのビット長を与える
 u_int encRepCode3(u_int msg, int nm) {
     u_int code = 0;
     int i, j, b;
@@ -26,6 +27,8 @@ u_int encRepCode3(u_int msg, int nm) {
     return code;
 }
 
+// (3, 1)繰り返し符号の復号関数
+// 第2引数はメッセージのビット長を与える
 u_int decRepCode3(u_int code, int nm) {
     u_int msg = 0;
     int i, j, s;
