@@ -8,6 +8,11 @@
 // double型の乱数を生成 [0.0, 1.0]
 #define randDouble() ((double)rand() / RAND_MAX)
 
+// 各ビットのエラー率が一定の通信路
+// 引数はチャンネルの入力, 入力長, エラー率
+// エラー率は double 型
+#define channelNoise(x, nc, e_prob) ((x) ^ makeErrorBits(nc, e_prob))
+
 // (7, 4)ハミング符号の符号化関数
 // 入力は4ビット, 出力は7ビットに固定
 // ほとんどパリティ作成なので, マクロに変更
@@ -43,10 +48,6 @@ u_int makeErrorBits(int n, double e_prob) {
     return err;
 }
 
-// 各ビットのエラー率が一定の通信路
-u_int channelNoise(u_int x, int nc, double e_prob) {
-    return x ^ makeErrorBits(nc, e_prob);
-}
 
 // (3, 1)繰り返し符号の符号化関数
 //  第2引数はメッセージのビット長を与える
