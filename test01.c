@@ -28,12 +28,12 @@ u_int repCode3(u_int m, int n) {
 }
 
 int main(void) {
-    // puts("こんにちは");
     srand((unsigned)time(NULL));
-    int r = rand();
-    printf("%d\n", r);
-    printBin32(r);
-    // printBin32(8);
-    repCode3(0b1101, 4);
+    // 4ビットに制限
+    u_int m = rand() & 0b1111;
+    u_int c;
+    printBin32(m);
+    c = repCode3(m, 4);
+    printBin32(c);
     return 0;
 }
