@@ -142,7 +142,7 @@ int compareErrorProb(int loop, double e_prob) {
             rep_err++;
         }
         
-        // (4, 7)繰り返し符号
+        // (4, 7)ハミング符号
         tcode = encHamCode7_4(tmsg);
         rcode = channelNoise(tcode, 7, e_prob);
         rmsg = decHamCode7_4(rcode);
@@ -176,6 +176,7 @@ int main(void) {
     // printBinN(r, 7);
     // rm = decHamCode7_4(r);
     // printBinN(rm, 4);
-    compareErrorProb(1000000, 0.1);
+    for (int i = 0; i < 10; i++)
+        compareErrorProb(1000000, 0.1);
     return 0;
 }
