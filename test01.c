@@ -20,7 +20,7 @@ void printBin32(u_int x) {
 u_int channelNoise(u_int x, int nc, double e_prob) {
     u_int y = 0;
     for (int i = 0; i < nc; i++) {
-        y |= getBit(x, i) << i;
+        y |= (getBit(x, i) & (randDouble() <= e_prob)) << i;
     }
     return y;
 }
@@ -41,13 +41,13 @@ u_int encRepCode3(u_int msg, int nm) {
 
 // (3, 1)繰り返し符号の復号関数
 // 第2引数はメッセージのビット長を与える
-u_int decRepCode3(u_int code, int nm) {
+u_int decRepCode3(u_int rsv, int nm) {
     u_int msg = 0;
     int i, j, s;
     for (i = 0; i < nm; i++) {
         s = 0;
         for (j = 0; j < 3; j++) {
-            s += getBit(code, i * 3 + j);
+            s += getBit(rsv, i * 3 + j);
         }
         if (s >= 2) {
             msg |= 1 << i;
@@ -68,7 +68,7 @@ int main(void) {
     printBin32(c);
     m = decRepCode3(c, 4);
     printBin32(m);
-    r = channelNoise(c, 12, 0.1);
+    r = channelNoise(c, 12, 1);
     printBin32(r);
     return 0;
 }
