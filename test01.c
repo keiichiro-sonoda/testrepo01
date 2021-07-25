@@ -84,7 +84,7 @@ int main(void) {
     // 4ビットに制限
     u_int tm = rand() & 0b1111;
     u_int c, r, rm;
-    // printBin32(tm);
+    puts("繰り返し符号");
     printBinN(tm, 4);
     c = encRepCode3(tm, 4);
     // printBin32(c);
@@ -96,6 +96,7 @@ int main(void) {
     printBinN(rm, 4);
     puts("ハミング符号");
     tm = rand() & 0b1111;
+    // tm = 0b1001;
     printBinN(tm, 4);
     c = encHamming7_4(tm);
     printBinN(c, 7);
