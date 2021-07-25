@@ -64,6 +64,21 @@ u_int decRepCode3(u_int rsv, int nm) {
     return msg;
 }
 
+// (7, 4)ハミング符号の符号化関数
+// 入力は4ビット, 出力は7ビットに固定
+u_int encHamming7_4(u_int msg) {
+    u_int code = msg << 3;
+    u_char b1, b2, b3, b4;
+    b1 = getBit(msg, 3);
+    b2 = getBit(msg, 2);
+    b3 = getBit(msg, 1);
+    b4 = msg & 1;
+    code |= (b1 ^ b3 ^ b4) << 2;
+    code |= (b1 ^ b2 ^ b4) << 1;
+    code |= b1 ^ b2 ^ b3;
+    return code;
+}
+
 int main(void) {
     srand((unsigned)time(NULL));
     // 4ビットに制限
@@ -79,5 +94,10 @@ int main(void) {
     printBinN(r, 12);
     rm = decRepCode3(r, 4);
     printBinN(rm, 4);
+    puts("ハミング符号");
+    tm = rand() & 0b1111;
+    printBinN(tm, 4);
+    c = encHamming7_4(tm);
+    printBinN(c, 7);
     return 0;
 }
