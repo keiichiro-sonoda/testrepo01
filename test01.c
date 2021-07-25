@@ -64,26 +64,39 @@ u_int decRepCode3(u_int rsv, int nm) {
     return msg;
 }
 
-// (7, 4)ハミング符号の符号化関数
-// 入力は4ビット, 出力は7ビットに固定
-u_int encHamming7_4(u_int msg) {
-    u_int code = msg << 3;
+// パリティビットの作成
+// 入力4ビット, パリティ3ビット
+u_int makeParityHamming7_4(u_int msg) {
+    u_int parity;
     u_char b1, b2, b3, b4;
     b1 = getBit(msg, 3);
     b2 = getBit(msg, 2);
     b3 = getBit(msg, 1);
     b4 = msg & 1;
-    code |= (b1 ^ b3 ^ b4) << 2;
-    code |= (b1 ^ b2 ^ b4) << 1;
-    code |= b1 ^ b2 ^ b3;
-    return code;
+    parity = (b1 ^ b3 ^ b4) << 2;
+    parity |= (b1 ^ b2 ^ b4) << 1;
+    parity |= b1 ^ b2 ^ b3;
+    return parity;
+}
+
+// (7, 4)ハミング符号の符号化関数
+// 入力は4ビット, 出力は7ビットに固定
+u_int encHamming7_4(u_int msg) {
+    return (msg << 3) | makeParityHamming7_4(msg);
+}
+
+// (7, 4)ハミング符号の復号関数
+// 入力は7ビット, 出力は4ビットに固定
+u_int decHamming7_4(u_int rsv) {
+    u_int msg = 0;
+    return msg;
 }
 
 int main(void) {
     srand((unsigned)time(NULL));
     // 4ビットに制限
-    u_int tm = rand() & 0b1111;
-    u_int c, r, rm;
+    u_int tm, c, r, rm;
+    tm = rand() & 0b1111;
     puts("繰り返し符号");
     printBinN(tm, 4);
     c = encRepCode3(tm, 4);
