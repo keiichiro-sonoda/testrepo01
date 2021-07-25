@@ -88,7 +88,13 @@ u_int makeParityHamming7_4(u_int msg) {
 // (7, 4)ハミング符号の復号関数
 // 入力は7ビット, 出力は4ビットに固定
 u_int decHamming7_4(u_int rsv) {
-    u_int msg = 0;
+    u_int msg, syndrome;
+    // パリティの再計算
+    u_int recal_parity = makeParityHamming7_4(rsv >> 3);
+    // 受信パリティとの比較
+    syndrome = recal_parity ^ (rsv & 0b111);
+    printBinN(syndrome, 3);
+    msg = 0;
     return msg;
 }
 
@@ -113,5 +119,7 @@ int main(void) {
     printBinN(tm, 4);
     c = encHamming7_4(tm);
     printBinN(c, 7);
+    r = c;
+    rm = decHamming7_4(r);
     return 0;
 }
