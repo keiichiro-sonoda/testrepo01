@@ -16,6 +16,14 @@ void printBin32(u_int x) {
     putchar(10);
 }
 
+// ビット数を柔軟に変えられるバイナリ表示関数 (最大32ビット)
+void printBinN(u_int x, int n) {
+    for (int i = n - 1; i >= 0; i--) {
+        printf("%d", getBit(x, i));
+    }
+    putchar(10);
+}
+
 // 各ビット毎のエラー率が一定の通信路
 u_int channelNoise(u_int x, int nc, double e_prob) {
     u_int y = 0;
@@ -61,12 +69,15 @@ int main(void) {
     // 4ビットに制限
     u_int tm = rand() & 0b1111;
     u_int c, r, rm;
-    printBin32(tm);
+    // printBin32(tm);
+    printBinN(tm, 4);
     c = encRepCode3(tm, 4);
-    printBin32(c);
+    // printBin32(c);
+    printBinN(c, 12);
     r = channelNoise(c, 12, 0.1);
-    printBin32(r);
+    // printBin32(r);
+    printBinN(r, 12);
     rm = decRepCode3(r, 4);
-    printBin32(rm);
+    printBinN(rm, 4);
     return 0;
 }
