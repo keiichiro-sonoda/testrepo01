@@ -119,7 +119,8 @@ int main(void) {
     printBinN(tm, 4);
     c = encHamming7_4(tm);
     printBinN(c, 7);
-    r = c;
+    r = channelNoise(c, 7, 0.0);
+    printBinN(r, 7);
     rm = decHamming7_4(r);
     return 0;
 }
