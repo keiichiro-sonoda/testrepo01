@@ -59,16 +59,14 @@ u_int decRepCode3(u_int rsv, int nm) {
 int main(void) {
     srand((unsigned)time(NULL));
     // 4ビットに制限
-    u_int m = rand() & 0b1111;
-    u_int c, r;
-    printBin32(m);
-    c = encRepCode3(m, 4);
+    u_int tm = rand() & 0b1111;
+    u_int c, r, rm;
+    printBin32(tm);
+    c = encRepCode3(tm, 4);
     printBin32(c);
-    c = rand() & 0xfff;
-    printBin32(c);
-    m = decRepCode3(c, 4);
-    printBin32(m);
-    r = channelNoise(c, 12, 0.5);
+    r = channelNoise(c, 12, 0.1);
     printBin32(r);
+    rm = decRepCode3(r, 4);
+    printBin32(rm);
     return 0;
 }
