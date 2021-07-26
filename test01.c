@@ -177,9 +177,10 @@ int main(void) {
         e_prob = i * 0.05;
         // タイトルを付ける
         fprintf(fpw, "nothing repetition hamming\n");
-        for (j = 0; j < 3; j++) {
+        for (j = 0; j < 10; j++) {
             compareErrorProb(1000000, e_prob, fpw);
         }
+        
         fclose(fpw);
     }
     return 0;
