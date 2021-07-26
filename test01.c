@@ -23,7 +23,7 @@
 #define encHamCode7_4(msg) (((msg) << 3) | makeParityHamCode7_4(msg))
 
 // ファイルの格納先
-#define path_format "./output_test%2d"
+#define path_format "./output_test%02d.txt"
 
 // 32ビットのバイナリ表示
 void printBin32(u_int x) {
@@ -174,7 +174,7 @@ int main(void) {
     
     for (i = 0; i < 11; i++) {
         e_prob = i * 0.05; // 5% ずつ動かす
-        for (j = 0; j < 10; j++) {
+        for (j = 0; j < 2; j++) {
             compareErrorProb(1000000, e_prob, fpw);
         }
     }
