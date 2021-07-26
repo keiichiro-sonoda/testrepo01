@@ -23,7 +23,7 @@
 #define encHamCode7_4(msg) (((msg) << 3) | makeParityHamCode7_4(msg))
 
 // ファイルの格納先
-#define path_format "./dat/output_test%02d.txt"
+#define path_format "./dat/dat/e_prob%02d.txt"
 
 // 32ビットのバイナリ表示
 void printBin32(u_int x) {
@@ -126,6 +126,7 @@ int compareErrorProb(int loop, double e_prob, FILE *fpw) {
     int i;
     u_int tmsg, tcode, rcode, rmsg;
     int ne_err = 0, rep_err = 0, ham_err = 0;
+    fprintf(fpw, "nothing repetition hamming");
     for (i = 0; i < loop; i++) {
         // メッセージは乱数で作って共有
         tmsg = rand4Bit();
@@ -166,18 +167,19 @@ int main(void) {
     char fnamew[FILENAME_MAX];
     srand((unsigned)time(NULL));
 
-    snprintf(fnamew, FILENAME_MAX, path_format, 0);
-    if ((fpw = fopen(fnamew, "w")) == NULL) {
-        printf("\a%s can't be opened.\n", fnamew);
-        return -1;
-    }
-    
     for (i = 0; i < 11; i++) {
+        // ファイル名は % 表示
+        snprintf(fnamew, FILENAME_MAX, path_format, i * 5);
+        if ((fpw = fopen(fnamew, "w")) == NULL) {
+            printf("\a%s can't be opened.\n", fnamew);
+            return -1;
+        }
+
         e_prob = i * 0.05; // 5% ずつ動かす
         for (j = 0; j < 2; j++) {
             compareErrorProb(1000000, e_prob, fpw);
         }
+        fclose(fpw);
     }
-    fclose(fpw);
     return 0;
 }
