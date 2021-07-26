@@ -126,7 +126,6 @@ int compareErrorProb(int loop, double e_prob, FILE *fpw) {
     int i;
     u_int tmsg, tcode, rcode, rmsg;
     int ne_err = 0, rep_err = 0, ham_err = 0;
-    fprintf(fpw, "nothing repetition hamming");
     for (i = 0; i < loop; i++) {
         // メッセージは乱数で作って共有
         tmsg = rand4Bit();
@@ -174,9 +173,11 @@ int main(void) {
             printf("\a%s can't be opened.\n", fnamew);
             return -1;
         }
-
-        e_prob = i * 0.05; // 5% ずつ動かす
-        for (j = 0; j < 2; j++) {
+         // 5% ずつ動かす
+        e_prob = i * 0.05;
+        // タイトルを付ける
+        fprintf(fpw, "nothing repetition hamming\n");
+        for (j = 0; j < 3; j++) {
             compareErrorProb(1000000, e_prob, fpw);
         }
         fclose(fpw);
