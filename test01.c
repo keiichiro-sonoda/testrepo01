@@ -158,7 +158,7 @@ int compareErrorProb(int loop, int e_prob_int, FILE *fpw) {
             ham_err++;
         }
     }
-    printf("%d %d %d\n", ne_err, rep_err, ham_err);
+    // printf("%d %d %d\n", ne_err, rep_err, ham_err);
     fprintf(fpw, "%d %d %d\n", ne_err, rep_err, ham_err);
 
     return 0;
@@ -186,6 +186,7 @@ int main(void) {
         else {
             e_prob_int = i * 0.05 * RAND_MAX;
         }
+        printf("%10d %+.30f\n", e_prob_int, (double)e_prob_int / RAND_MAX);
         // タイトルを付ける
         fprintf(fpw, "nothing repetition hamming\n");
         for (j = 0; j < 10; j++) {
