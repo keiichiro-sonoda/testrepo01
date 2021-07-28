@@ -13,8 +13,8 @@
 
 // 各ビットのエラー率が一定の通信路
 // 引数はチャンネルの入力, 入力長, エラー率
-// エラー率は double 型
-#define channelNoise(x, nc, e_prob) ((x) ^ makeErrorBits(nc, e_prob))
+// エラー率は, 予め RAND_MAX で乗算された int 型とする
+#define channelNoise(x, nc, e_prob_int) ((x) ^ makeErrorBits(nc, e_prob_int))
 
 // (7, 4)ハミング符号の符号化関数
 // 入力は4ビット, 出力は7ビットに固定
@@ -24,6 +24,9 @@
 
 // ファイルの格納先
 #define path_format "./dat/dat/e_prob%02d.txt"
+
+// テスト用のパス
+#define test_path_format "./test/e_prob%02d.txt"
 
 // 32ビットのバイナリ表示
 void printBin32(u_int x) {
@@ -43,13 +46,14 @@ void printBinN(u_int x, int n) {
 
 // エラービット列の作成
 // ビット毎独立で, 同じ確率でエラーを発生させる
-u_int makeErrorBits(int n, double e_prob) {
+// エラー率は, 予め RAND_MAX で乗算された int 型とする
+u_int makeErrorBits(int n, int e_prob_int) {
     u_int err = 0;
     for (int i = 0; i < n; i++) {
         err <<= 1;
         // 比較演算で得られるブール値をそのまま加える
         // 乱数がエラー率以下なら1, それ以外は0
-        err |= (randDouble() <= e_prob);
+        err |= (rand() <= e_prob_int);
     }
     return err;
 }
@@ -122,7 +126,8 @@ u_int decHamCode7_4(u_int rsv) {
 }
 
 // エラー率の比較
-int compareErrorProb(int loop, double e_prob, FILE *fpw) {
+// エラー率は, 予め RAND_MAX で乗算された int 型とする
+int compareErrorProb(int loop, int e_prob_int, FILE *fpw) {
     int i;
     u_int tmsg, tcode, rcode, rmsg;
     int ne_err = 0, rep_err = 0, ham_err = 0;
@@ -131,7 +136,7 @@ int compareErrorProb(int loop, double e_prob, FILE *fpw) {
         tmsg = rand4Bit();
 
         // 符号化なし
-        rmsg = channelNoise(tmsg, 4, e_prob);
+        rmsg = channelNoise(tmsg, 4, e_prob_int);
         // エラー数のカウント
         if (tmsg != rmsg) {
             ne_err++;
@@ -139,7 +144,7 @@ int compareErrorProb(int loop, double e_prob, FILE *fpw) {
         
         // (3, 1)繰り返し符号
         tcode = encRepCode3(tmsg, 4);
-        rcode = channelNoise(tcode, 12, e_prob);
+        rcode = channelNoise(tcode, 12, e_prob_int);
         rmsg = decRepCode3(rcode, 4);
         if (tmsg != rmsg) {
             rep_err++;
@@ -147,7 +152,7 @@ int compareErrorProb(int loop, double e_prob, FILE *fpw) {
         
         // (4, 7)ハミング符号
         tcode = encHamCode7_4(tmsg);
-        rcode = channelNoise(tcode, 7, e_prob);
+        rcode = channelNoise(tcode, 7, e_prob_int);
         rmsg = decHamCode7_4(rcode);
         if (tmsg != rmsg) {
             ham_err++;
@@ -160,25 +165,31 @@ int compareErrorProb(int loop, double e_prob, FILE *fpw) {
 }
 
 int main(void) {
-    int i, j;
-    double e_prob;
+    int i, j, e_prob_int;
     FILE *fpw;
     char fnamew[FILENAME_MAX];
     srand((unsigned)time(NULL));
 
     for (i = 0; i < 11; i++) {
         // ファイル名は % 表示
-        snprintf(fnamew, FILENAME_MAX, path_format, i * 5);
+        // snprintf(fnamew, FILENAME_MAX, path_format, i * 5);
+        snprintf(fnamew, FILENAME_MAX, test_path_format, i * 5);
         if ((fpw = fopen(fnamew, "w")) == NULL) {
             printf("\a%s can't be opened.\n", fnamew);
             return -1;
         }
-         // 5% ずつ動かす
-        e_prob = i * 0.05;
+        // エラーにする乱数の最大値を設定.
+        // 0も稀に出るので, 確率0は負の値とする.
+        if (i == 0) {
+            e_prob_int = -1;
+        }
+        else {
+            e_prob_int = i * 0.05 * RAND_MAX;
+        }
         // タイトルを付ける
         fprintf(fpw, "nothing repetition hamming\n");
         for (j = 0; j < 10; j++) {
-            compareErrorProb(1000000, e_prob, fpw);
+            compareErrorProb(1000, e_prob_int, fpw);
         }
         
         fclose(fpw);
