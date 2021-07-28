@@ -177,10 +177,11 @@ int main(void) {
     char fnamew[FILENAME_MAX];
     srand((unsigned)time(NULL));
 
+    // 0% から 50% まで 5% ずつ (計11通り) 動かす
     for (i = 0; i < 11; i++) {
         // ファイル名は % 表示
-        // snprintf(fnamew, FILENAME_MAX, path_format, i * 5);
-        snprintf(fnamew, FILENAME_MAX, test_path_format, i * 5);
+        snprintf(fnamew, FILENAME_MAX, path_format, i * 5);
+        // snprintf(fnamew, FILENAME_MAX, test_path_format, i * 5);
         if ((fpw = fopen(fnamew, "w")) == NULL) {
             printf("\a%s can't be opened.\n", fnamew);
             return -1;
