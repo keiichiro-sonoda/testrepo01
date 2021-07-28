@@ -3,10 +3,10 @@
 #include <time.h>
 
 // サンプル数の設定
-#define NUM_SAMPLE 10000
+#define NUM_SAMPLE 100
 
 // 1回の試行におけるループ数
-#define NUM_LOOP 100
+#define NUM_LOOP 10000
 
 // 指定したビットを取得
 #define getBit(x, n) (((x) >> (n)) & 1)
