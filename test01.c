@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 
+// サンプル数の設定
+#define NUM_SAMPLE 1
+
+// 1回の試行におけるループ数
+#define NUM_LOOP 1000
+
 // 指定したビットを取得
 #define getBit(x, n) (((x) >> (n)) & 1)
 
@@ -186,11 +192,12 @@ int main(void) {
         else {
             e_prob_int = i * 0.05 * RAND_MAX;
         }
-        printf("%10d %+.30f\n", e_prob_int, (double)e_prob_int / RAND_MAX);
+        printf("%10d / %10d = %+.11f\n", e_prob_int, RAND_MAX, (double)e_prob_int / RAND_MAX);
+        printBin32(e_prob_int);
         // タイトルを付ける
         fprintf(fpw, "nothing repetition hamming\n");
-        for (j = 0; j < 10; j++) {
-            compareErrorProb(1000, e_prob_int, fpw);
+        for (j = 0; j < NUM_SAMPLE; j++) {
+            compareErrorProb(NUM_LOOP, e_prob_int, fpw);
         }
         
         fclose(fpw);
