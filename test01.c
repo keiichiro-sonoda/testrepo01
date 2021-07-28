@@ -59,6 +59,7 @@ u_int makeErrorBits(int n, int e_prob_int) {
         err <<= 1;
         // 比較演算で得られるブール値をそのまま加える
         // 乱数がエラー率以下なら1, それ以外は0
+        // int 型にする際, 小数点以下切り捨てなので等号含む
         err |= (rand() <= e_prob_int);
     }
     return err;
