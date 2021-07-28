@@ -166,7 +166,8 @@ int compareErrorProb(int loop, int e_prob_int, FILE *fpw) {
         }
     }
     // printf("%d %d %d\n", ne_err, rep_err, ham_err);
-    fprintf(fpw, "%d %d %d\n", ne_err, rep_err, ham_err);
+    // 改行コードを windows に合わせる
+    fprintf(fpw, "%d %d %d\r\n", ne_err, rep_err, ham_err);
 
     return 0;
 }
