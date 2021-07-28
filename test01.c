@@ -3,7 +3,7 @@
 #include <time.h>
 
 // サンプル数の設定
-#define NUM_SAMPLE 10
+#define NUM_SAMPLE 100
 
 // 1回の試行におけるループ数
 #define NUM_LOOP 100
