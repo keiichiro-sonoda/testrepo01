@@ -3,6 +3,7 @@
 
 % 数式
 \usepackage{amsmath,amsfonts}
+\usepackage{braket}
 \usepackage{bm}
 % 画像
 \usepackage[dvipdfmx]{graphicx}
@@ -26,6 +27,7 @@ $\mathbb{C}^2$の標準基底
   \end{bmatrix}
 \]
 で$\{{\rm H}e_1, {\rm H}e_2\}$がCONSになることを示す.
+${\rm H}e_1, {\rm H}e_2$を計算すると
 \begin{eqnarray*}
   {\rm H}e_1 = \frac{1}{\sqrt{2}} \begin{bmatrix}
     1 & 1 \\ 1 & -1
@@ -41,6 +43,11 @@ $\mathbb{C}^2$の標準基底
   \end{bmatrix} = \frac{1}{\sqrt{2}} \begin{bmatrix}
     1 \\ -1
   \end{bmatrix}
+\end{eqnarray*}
+となるので, 
+\begin{eqnarray*}
+  \braket{{\rm H}e_1, {\rm H}e_1} =
+  \frac{1}{2}(1 + 1) = 1
 \end{eqnarray*}
 
 \end{document}
