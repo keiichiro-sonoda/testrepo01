@@ -46,13 +46,13 @@ $\mathbb{C}^2$の標準基底
 となる. それぞれの内積は
 \begin{eqnarray*}
   \braket{{\rm H}e_1, {\rm H}e_1}
-  = \frac{1}{2}(1 + 1) = 1 = \braket{e_1, e_1} \\
+  &=& \frac{1}{2}(1 + 1) = 1 = \braket{e_1, e_1} \\
   \braket{{\rm H}e_1, {\rm H}e_2}
-  = \frac{1}{2}(1 - 1) = 0 = \braket{e_1, e_2}\\
+  &=& \frac{1}{2}(1 - 1) = 0 = \braket{e_1, e_2} \\
   \braket{{\rm H}e_2, {\rm H}e_1}
-  = \frac{1}{2}(1 - 1) = 0 = \braket{e_2, e_1}\\
+  &=& \frac{1}{2}(1 - 1) = 0 = \braket{e_2, e_1} \\
   \braket{{\rm H}e_2, {\rm H}e_2}
-  = \frac{1}{2}(1 + 1) = 1 = \braket{e_2, e_2}\\
+  &=& \frac{1}{2}(1 + 1) = 1 = \braket{e_2, e_2} \\
 \end{eqnarray*}
 となり, 標準基底について${\rm H}$はユニタリ作用素の条件を満たす.
 ${}^\forall x, y \in \mathbb{C}^2$は$e_1, e_2$
@@ -76,5 +76,26 @@ $\mathbb{C}^3$の正規直交基底の1つとして,
   \end{bmatrix}
 \]
 が挙げられる.
+
+\section{}
+
+状態と正規直行基底の内積を計算すると
+\begin{eqnarray*}
+  |\braket{\xi_1, \psi}|^2
+  &=& \left(\frac{1}{6}(-2 + 2 + 1 + 0)\right)^2
+  = \left(\frac{1}{6}\right)^2 = \frac{1}{36} \\
+  |\braket{\xi_2, \psi}|^2
+  &=& \left(\frac{1}{6}(2 - 2 + 1 + 0)\right)^2
+  = \left(\frac{1}{6}\right)^2 = \frac{1}{36} \\
+  |\braket{\xi_3, \psi}|^2
+  &=& \left(\frac{1}{6}(2 + 2 - 1 + 0)\right)^2
+  = \left(\frac{1}{2}\right)^2 = \frac{1}{4} \\
+  |\braket{\xi_4, \psi}|^2
+  &=& \left(\frac{1}{6}(2 + 2 + 1 - 0)\right)^2
+  = \left(\frac{5}{6}\right)^2 = \frac{25}{36}
+\end{eqnarray*}
+となる. 公理2より, 数値1, 2, 3, 4が検出される確率はそれぞれ
+$\frac{1}{36}, \frac{1}{36}, \frac{1}{4}, \frac{25}{36}$
+である.
 
 \end{document}
