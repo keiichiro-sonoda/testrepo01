@@ -26,8 +26,7 @@ $\mathbb{C}^2$の標準基底
     0 \\ 1
   \end{bmatrix}
 \]
-で$\{{\rm H}e_1, {\rm H}e_2\}$がCONSになることを示す.
-${\rm H}e_1, {\rm H}e_2$を計算すると
+について${\rm H}e_1, {\rm H}e_2$を計算すると
 \begin{eqnarray*}
   {\rm H}e_1 = \frac{1}{\sqrt{2}} \begin{bmatrix}
     1 & 1 \\ 1 & -1
@@ -44,16 +43,23 @@ ${\rm H}e_1, {\rm H}e_2$を計算すると
     1 \\ -1
   \end{bmatrix}
 \end{eqnarray*}
-となるので, 内積は
+となる. それぞれの内積は
 \begin{eqnarray*}
   \braket{{\rm H}e_1, {\rm H}e_1}
-  = \frac{1}{2}(1 + 1) = 1 \\
+  = \frac{1}{2}(1 + 1) = 1 = \braket{e_1, e_1} \\
   \braket{{\rm H}e_1, {\rm H}e_2}
-  = \frac{1}{2}(1 - 1) = 0 \\
+  = \frac{1}{2}(1 - 1) = 0 = \braket{e_1, e_2}\\
   \braket{{\rm H}e_2, {\rm H}e_1}
-  = \frac{1}{2}(1 - 1) = 0 \\
+  = \frac{1}{2}(1 - 1) = 0 = \braket{e_2, e_1}\\
   \braket{{\rm H}e_2, {\rm H}e_2}
-  = \frac{1}{2}(1 + 1) = 1 \\
+  = \frac{1}{2}(1 + 1) = 1 = \braket{e_2, e_2}\\
 \end{eqnarray*}
+となり, 標準基底について${\rm H}$はユニタリ作用素の条件を満たす.
+${}^\forall x, y \in \mathbb{C}^2$は$e_1, e_2$
+の線形結合で表せるので, 
+\[
+  \braket{{\rm H}x, {\rm H}y} = \braket{x, y}
+\]
+が得られる. よって${\rm H}$はユニタリ作用素である.
 
 \end{document}
