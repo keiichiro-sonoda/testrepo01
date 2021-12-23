@@ -128,7 +128,7 @@ $x \in [0, 2\pi]$のとき$\cos{nx}, \sin{nx} \in [0, 1]$なので,
 \end{itemize}
 続いて, 元が異なる場合の内積を計算する.
 \begin{itemize}
-  \item 周波数が異なるcosどうし
+  \item cos ($m \neq n$)
     \begin{eqnarray*}
       && \left<\frac{1}{\sqrt{\pi}}\cos{mx}, \frac{1}{\sqrt{\pi}}\cos{nx}\right>
       = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\cos{mx}}\frac{1}{\sqrt{\pi}}\cos{nx}}dx \\
@@ -137,7 +137,7 @@ $x \in [0, 2\pi]$のとき$\cos{nx}, \sin{nx} \in [0, 1]$なので,
       &=& \frac{1}{2\pi}\left[\frac{1}{m + n}\sin{(m + n)x} + \frac{1}{m - n}\sin{(m - n)x}\right]_{0}^{2\pi}
       = \frac{1}{2\pi}\left(0 - 0\right) = 0
     \end{eqnarray*}
-  \item 周波数が異なるsinどうし
+  \item sin ($m \neq n$)
     \begin{eqnarray*}
       && \left<\frac{1}{\sqrt{\pi}}\sin{mx}, \frac{1}{\sqrt{\pi}}\sin{nx}\right>
       = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\sin{mx}}\frac{1}{\sqrt{\pi}}\sin{nx}}dx \\
@@ -145,6 +145,22 @@ $x \in [0, 2\pi]$のとき$\cos{nx}, \sin{nx} \in [0, 1]$なので,
       = \frac{1}{2\pi}\int_{0}^{2\pi}{\left(\cos{(m - n)x} - \cos{(m + n)x}\right)}dx \\
       &=& \frac{1}{2\pi}\left[\frac{1}{m - n}\sin{(m - n)x} - \frac{1}{m + n}\sin{(m + n)x}\right]_{0}^{2\pi}
       = \frac{1}{2\pi}\left(0 - 0\right) = 0
+    \end{eqnarray*}
+  \item cosとsin
+    \begin{eqnarray*}
+      && \left<\frac{1}{\sqrt{\pi}}\cos{mx}, \frac{1}{\sqrt{\pi}}\sin{nx}\right>
+      = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\cos{mx}}\frac{1}{\sqrt{\pi}}\sin{nx}}dx \\
+      &=& \frac{1}{\pi}\int_{0}^{2\pi}{\cos{mx}\sin{nx}}dx
+      = \frac{1}{2\pi}\int_{0}^{2\pi}{\left(\sin{(m + n)x} + \sin{(m - n)x}\right)}dx \\
+      &=& \frac{1}{2\pi}\left[-\frac{1}{m + n}\cos{(m + n)x} - \frac{1}{m - n}\cos{(m - n)x}\right]_{0}^{2\pi} \\
+      &=& \frac{1}{2\pi}\left(\left(-\frac{1}{m + n} -\frac{1}{m - n}\right)-\left(-\frac{1}{m + n} -\frac{1}{m - n}\right)\right) = 0
+    \end{eqnarray*}
+  \item sinとcos
+    \begin{eqnarray*}
+      && \left<\frac{1}{\sqrt{\pi}}\sin{mx}, \frac{1}{\sqrt{\pi}}\cos{nx}\right>
+      = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\sin{mx}}\frac{1}{\sqrt{\pi}}\cos{nx}}dx \\
+      &=& \frac{1}{\pi}\int_{0}^{2\pi}{\cos{nx}\sin{mx}}dx
+      = 0
     \end{eqnarray*}
 \end{itemize}
 
