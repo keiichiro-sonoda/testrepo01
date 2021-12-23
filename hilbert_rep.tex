@@ -107,9 +107,11 @@ $x \in [0, 2\pi]$のとき$\cos{nx}, \sin{nx} \in [0, 1]$なので,
 \end{eqnarray*}
 が成立する. まず, 元が同じ場合の内積を計算する.
 \begin{eqnarray*}
-  &&\braket{\frac{1}{\sqrt{\pi}}\cos{nx}, \frac{1}{\sqrt{\pi}}\cos{nx}} \\
+  &&\left<\frac{1}{\sqrt{\pi}}\cos{nx}, \frac{1}{\sqrt{\pi}}\cos{nx}\right> \\
   &=& \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\cos{nx}}\frac{1}{\sqrt{\pi}}\cos{nx}}dx \\
-  &=& \frac{1}{\pi}\int_{0}^{2\pi}{\cos^{2}{nx}}dx
+  &=& \frac{1}{\pi}\int_{0}^{2\pi}{\cos^{2}{nx}}dx \\
+  &=& \frac{1}{2\pi}\int_{0}^{2\pi}{\left(1 - \cos{2nx}\right)}dx \\
+  &=& \frac{1}{2\pi}\left[x - \frac{1}{2}\sin{2nx}\right]_{0}^{2\pi}
 \end{eqnarray*}
 
 \end{document}

@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.sjis) (TeX Live 2021/W32TeX) (preloaded format=platex 2021.11.4)  23 DEC 2021 15:54
+This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.sjis) (TeX Live 2021/W32TeX) (preloaded format=platex 2021.11.4)  23 DEC 2021 15:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -208,7 +208,7 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 4.805pt on input line 20.
 [1
 
-] [2] (out/hilbert_rep.aux) ) 
+] [2] [3] (out/hilbert_rep.aux) ) 
 Here is how much of TeX's memory you used:
  1951 strings out of 479042
  26457 string characters out of 5869024
@@ -218,4 +218,4 @@ Here is how much of TeX's memory you used:
  934 hyphenation exceptions out of 8191
  57i,12n,66p,262b,263s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on out/hilbert_rep.dvi (2 pages, 6704 bytes).
+Output written on out/hilbert_rep.dvi (3 pages, 7164 bytes).
