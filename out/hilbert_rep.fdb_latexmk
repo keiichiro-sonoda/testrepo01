@@ -1,11 +1,12 @@
 # Fdb version 3
-["dvipdf"] 1640242769 "out/hilbert_rep.dvi" "out/hilbert_rep.pdf" "out/hilbert_rep" 1640242770
-  "out/hilbert_rep.dvi" 1640242768 7164 3796fa8f91053924bd4f3cfa246e85f5 "latex"
+["dvipdf"] 1640266158 "out/hilbert_rep.dvi" "out/hilbert_rep.pdf" "out/hilbert_rep" 1640266160
+  "out/hilbert_rep.dvi" 1640266158 8384 7c32a4483d86a474035e15d6be68775d "latex"
   (generated)
   "out/hilbert_rep.pdf"
-["latex"] 1640242767 "c:/Users/21w2039g/GitHub/testrepo01/hilbert_rep.tex" "out/hilbert_rep.dvi" "hilbert_rep" 1640242770
-  "c:/Users/21w2039g/GitHub/testrepo01/hilbert_rep.tex" 1640242765 3552 6a69283c6235b4928460455f6d4418db ""
+["latex"] 1640266157 "c:/Users/21w2039g/GitHub/testrepo01/hilbert_rep.tex" "out/hilbert_rep.dvi" "hilbert_rep" 1640266160
+  "c:/Users/21w2039g/GitHub/testrepo01/hilbert_rep.tex" 1640266156 4159 def53788d2972776e1dd0a2ffa8ceb4e ""
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1636020835 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1636020371 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm" 1636023980 468 53f854284f6afa6c36aaa2d1090ecc12 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/jis/jisg.tfm" 1636023980 468 53f854284f6afa6c36aaa2d1090ecc12 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm" 1636023980 856 7404843a5f798859944d7973a47821d5 ""
@@ -68,9 +69,9 @@
   "c:/texlive/2021/texmf-dist/web2c/texmf.cnf" 1636021782 40042 fe981136cbb5f3715ab1b0e46e3d3892 ""
   "c:/texlive/2021/texmf-var/web2c/eptex/platex.fmt" 1636026151 2759442 4ddd0c23f58a0ea9d28fd7ba56fd5519 ""
   "c:/texlive/2021/texmf.cnf" 1636025950 713 e69b156964470283e0530f5060668171 ""
-  "hilbert_rep.tex" 1640242765 3552 6a69283c6235b4928460455f6d4418db ""
-  "out/hilbert_rep.aux" 1640242768 384 94447f69fd58798a15570c91c0ebd99b "latex"
+  "hilbert_rep.tex" 1640266156 4159 def53788d2972776e1dd0a2ffa8ceb4e ""
+  "out/hilbert_rep.aux" 1640266158 384 94447f69fd58798a15570c91c0ebd99b "latex"
   (generated)
+  "out/hilbert_rep.log"
   "out/hilbert_rep.dvi"
   "out/hilbert_rep.aux"
-  "out/hilbert_rep.log"
