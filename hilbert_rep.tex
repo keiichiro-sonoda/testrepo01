@@ -137,6 +137,15 @@ $x \in [0, 2\pi]$のとき$\cos{nx}, \sin{nx} \in [0, 1]$なので,
       &=& \frac{1}{2\pi}\left[\frac{1}{m + n}\sin{(m + n)x} + \frac{1}{m - n}\sin{(m - n)x}\right]_{0}^{2\pi}
       = \frac{1}{2\pi}\left(0 - 0\right) = 0
     \end{eqnarray*}
+  \item 周波数が異なるsinどうし
+    \begin{eqnarray*}
+      && \left<\frac{1}{\sqrt{\pi}}\sin{mx}, \frac{1}{\sqrt{\pi}}\sin{nx}\right>
+      = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\sin{mx}}\frac{1}{\sqrt{\pi}}\sin{nx}}dx \\
+      &=& \frac{1}{\pi}\int_{0}^{2\pi}{\sin{mx}\sin{nx}}dx
+      = \frac{1}{2\pi}\int_{0}^{2\pi}{\left(\cos{(m - n)x} - \cos{(m + n)x}\right)}dx \\
+      &=& \frac{1}{2\pi}\left[\frac{1}{m - n}\sin{(m - n)x} - \frac{1}{m + n}\sin{(m + n)x}\right]_{0}^{2\pi}
+      = \frac{1}{2\pi}\left(0 - 0\right) = 0
+    \end{eqnarray*}
 \end{itemize}
 
 \end{document}
