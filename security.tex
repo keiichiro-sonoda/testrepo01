@@ -1,0 +1,115 @@
+\documentclass[a4paper,11pt]{jsarticle}
+
+
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{braket}
+\usepackage{bm}
+% 画像
+\usepackage[dvipdfmx]{graphicx}
+
+
+\begin{document}
+
+\title{情報セキュリティ学特論レポート}
+\author{園田継一郎}
+\date{\today}
+\maketitle
+
+\section{はじめに}
+
+\section{}
+
+状態と正規直行基底の内積を計算すると
+\begin{eqnarray*}
+  |\braket{\xi_1, \psi}|^2
+  &=& \left(\frac{1}{6}(-2 + 2 + 1 + 0)\right)^2
+  = \left(\frac{1}{6}\right)^2 = \frac{1}{36} \\
+  |\braket{\xi_2, \psi}|^2
+  &=& \left(\frac{1}{6}(2 - 2 + 1 + 0)\right)^2
+  = \left(\frac{1}{6}\right)^2 = \frac{1}{36} \\
+  |\braket{\xi_3, \psi}|^2
+  &=& \left(\frac{1}{6}(2 + 2 - 1 + 0)\right)^2
+  = \left(\frac{1}{2}\right)^2 = \frac{1}{4} \\
+  |\braket{\xi_4, \psi}|^2
+  &=& \left(\frac{1}{6}(2 + 2 + 1 - 0)\right)^2
+  = \left(\frac{5}{6}\right)^2 = \frac{25}{36}
+\end{eqnarray*}
+となる. 公理2より, 数値1, 2, 3, 4が検出される確率はそれぞれ
+$\frac{1}{36}, \frac{1}{36}, \frac{1}{4}, \frac{25}{36}$
+である.
+
+\section{}
+$m, n \in \mathbb{N}$とし, 集合の元どうしで内積を計算する.
+$x \in [0, 2\pi]$のとき$\cos{nx}, \sin{nx} \in [0, 1]$なので, 
+\begin{eqnarray*}
+  \overline{\cos{nx}} = \cos{nx} \\
+  \overline{\sin{nx}} = \sin{nx} \\
+\end{eqnarray*}
+が成立する. まず, 元が同じ場合の内積を計算する.
+\begin{itemize}
+  \item cos
+    \begin{eqnarray*}
+      && \left<\frac{1}{\sqrt{\pi}}\cos{nx}, \frac{1}{\sqrt{\pi}}\cos{nx}\right>
+      = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\cos{nx}}\frac{1}{\sqrt{\pi}}\cos{nx}}dx \\
+      &=& \frac{1}{\pi}\int_{0}^{2\pi}{\cos^{2}{nx}}dx
+      = \frac{1}{2\pi}\int_{0}^{2\pi}{\left(1 + \cos{2nx}\right)}dx \\
+      &=& \frac{1}{2\pi}\left[x + \frac{1}{2}\sin{2nx}\right]_{0}^{2\pi}
+      = \frac{1}{2\pi}\left(2\pi - 0\right) = 1
+    \end{eqnarray*}
+  \item sin
+    \begin{eqnarray*}
+      && \left<\frac{1}{\sqrt{\pi}}\sin{nx}, \frac{1}{\sqrt{\pi}}\sin{nx}\right>
+      = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\sin{nx}}\frac{1}{\sqrt{\pi}}\sin{nx}}dx \\
+      &=& \frac{1}{\pi}\int_{0}^{2\pi}{\sin^{2}{nx}}dx
+      = \frac{1}{2\pi}\int_{0}^{2\pi}{\left(1 - \cos{2nx}\right)}dx \\
+      &=& \frac{1}{2\pi}\left[x - \frac{1}{2}\sin{2nx}\right]_{0}^{2\pi}
+      = \frac{1}{2\pi}\left(2\pi - 0\right) = 1
+    \end{eqnarray*}
+\end{itemize}
+続いて, 元が異なる場合の内積を計算する.
+\begin{itemize}
+  \item cos ($m \neq n$)
+    \begin{eqnarray*}
+      && \left<\frac{1}{\sqrt{\pi}}\cos{mx}, \frac{1}{\sqrt{\pi}}\cos{nx}\right>
+      = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\cos{mx}}\frac{1}{\sqrt{\pi}}\cos{nx}}dx \\
+      &=& \frac{1}{\pi}\int_{0}^{2\pi}{\cos{mx}\cos{nx}}dx
+      = \frac{1}{2\pi}\int_{0}^{2\pi}{\left(\cos{(m + n)x} + \cos{(m - n)x}\right)}dx \\
+      &=& \frac{1}{2\pi}\left[\frac{1}{m + n}\sin{(m + n)x} + \frac{1}{m - n}\sin{(m - n)x}\right]_{0}^{2\pi}
+      = \frac{1}{2\pi}\left(0 - 0\right) = 0
+    \end{eqnarray*}
+  \item sin ($m \neq n$)
+    \begin{eqnarray*}
+      && \left<\frac{1}{\sqrt{\pi}}\sin{mx}, \frac{1}{\sqrt{\pi}}\sin{nx}\right>
+      = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\sin{mx}}\frac{1}{\sqrt{\pi}}\sin{nx}}dx \\
+      &=& \frac{1}{\pi}\int_{0}^{2\pi}{\sin{mx}\sin{nx}}dx
+      = \frac{1}{2\pi}\int_{0}^{2\pi}{\left(\cos{(m - n)x} - \cos{(m + n)x}\right)}dx \\
+      &=& \frac{1}{2\pi}\left[\frac{1}{m - n}\sin{(m - n)x} - \frac{1}{m + n}\sin{(m + n)x}\right]_{0}^{2\pi}
+      = \frac{1}{2\pi}\left(0 - 0\right) = 0
+    \end{eqnarray*}
+  \item cosとsin
+    \begin{eqnarray*}
+      && \left<\frac{1}{\sqrt{\pi}}\cos{mx}, \frac{1}{\sqrt{\pi}}\sin{nx}\right>
+      = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\cos{mx}}\frac{1}{\sqrt{\pi}}\sin{nx}}dx \\
+      &=& \frac{1}{\pi}\int_{0}^{2\pi}{\cos{mx}\sin{nx}}dx
+      = \frac{1}{2\pi}\int_{0}^{2\pi}{\left(\sin{(m + n)x} + \sin{(m - n)x}\right)}dx \\
+      &=& \frac{1}{2\pi}\left[-\frac{1}{m + n}\cos{(m + n)x} - \frac{1}{m - n}\cos{(m - n)x}\right]_{0}^{2\pi} \\
+      &=& \frac{1}{2\pi}\left(\left(-\frac{1}{m + n} -\frac{1}{m - n}\right)-\left(-\frac{1}{m + n} -\frac{1}{m - n}\right)\right) = 0
+    \end{eqnarray*}
+  \item sinとcos
+    \begin{eqnarray*}
+      && \left<\frac{1}{\sqrt{\pi}}\sin{mx}, \frac{1}{\sqrt{\pi}}\cos{nx}\right>
+      = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\sin{mx}}\frac{1}{\sqrt{\pi}}\cos{nx}}dx \\
+      &=& \frac{1}{\pi}\int_{0}^{2\pi}{\cos{nx}\sin{mx}}dx
+      = 0
+    \end{eqnarray*}
+\end{itemize}
+以上より, 同じ元どうしの内積が1になり, 
+異なる元どうしの内積が0になるので, 
+\[
+  \Set{\frac{1}{\sqrt{\pi}}\cos{nx} | n \in \mathbb{N}}
+  \cup \Set{\frac{1}{\sqrt{\pi}}\sin{nx} | n \in \mathbb{N}}
+\]
+は正規直交系である.
+
+\end{document}
