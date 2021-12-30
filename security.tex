@@ -68,12 +68,43 @@ $S$について以下が成り立つ.
   e(aP, bQ) = g^{S(aP, bQ)} = g^{abS(P, Q)} =
   \left(g^{S(P, Q)}\right)^{ab} = e(P, Q)^{ab}
 \]
-が成り立つ. この性質を使えば, 以下の方法で3者間鍵共有ができる.
+が成り立つ. この性質を使えば, 以下のように3者間鍵共有ができる.
 \begin{enumerate}
   \item 楕円曲線上の$P, Q$を固定してAさん, Bさん, Cさんで共有する.
   \item それぞれ秘密の整数値$a, b, c$を持ち, $(aP, aQ), (bP, bQ), (cP, cQ)$を公開する.
   \item Aさんは$e(bP, cQ)^a = e(P, Q)^{abc}$を計算する.
     Bさん, Cさんも同様に$e(P, Q)^{abc}$を計算する.
+\end{enumerate}
+
+この手法で3者間鍵共有が実現できるが, 共有する値が多く, 
+計算順序も考慮しなければならない.
+そこで, 写像$e'$を
+\[
+  \begin{array}{rccc}
+    e' \colon & \left<P\right> \times \left<P\right> & \longrightarrow & \mathbb{F}_p \\
+      & \rotatebox{90}{$\in$} & & \rotatebox{90}{$\in$} \\
+      & (aP, bP) & \longmapsto & e(aP, \psi(bP))
+  \end{array}
+\]
+と定義する.
+ここで$\psi$は, 楕円曲線上の$P$を, $P$の巡回群
+$\left<P\right> := \Set{nP | n \in \mathbb{Z}}$
+に含まれない$Q$に移す線形写像(distortion写像)である.
+$\left<P\right>$の元どうしで$e$を計算すると, 
+\[
+  e(aP, bP) = g^{S(aP, bP)} = g^0 = 1
+\]
+となり鍵として使えないが, $e'$であれば
+\[
+  e'(aP, bP) = e(aP, \psi(bP)) = e(aP, bQ) = e(P, Q)^{ab} \neq 1
+\]
+となるので, $P$のみで鍵を作れる.
+$e'$を使った3者間DH鍵共有は以下のようになる.
+\begin{enumerate}
+  \item 楕円曲線上の$P$を固定してAさん, Bさん, Cさんで共有する.
+  \item それぞれ秘密の整数値$a, b, c$を持ち, $aP, bP, cP$を公開する.
+  \item Aさんは$e'(bP, cP)^a = e'(cP, bP)^a = e'(P, P)^{abc}$を計算する.
+    Bさん, Cさんも同様に$e'(P, P)^{abc}$を計算する.
 \end{enumerate}
 
 \section{まとめ}
