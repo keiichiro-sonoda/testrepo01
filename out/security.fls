@@ -212,6 +212,9 @@ INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
+INPUT c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm
+INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
@@ -249,9 +252,6 @@ INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/jis/jisg.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/jis/jisg.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/jis/jisg.tfm
-INPUT c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
-INPUT c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm
-INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/ptex-fonts/jis/jisg.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmss12.tfm
