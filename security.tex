@@ -27,7 +27,16 @@ DH鍵共有では, 2者間でしか鍵の共有ができない.
 
 \section{3者間DH鍵共有}
 3者間DH鍵共有には, 楕円曲線上のペアリングという演算が使われる.
-ペアリングという演算は, 楕円曲線E上の2個の点の組から\cite{bib1}
+ペアリングは, 楕円曲線$E$上の2個の点の組から
+ある有限体$F_q$への写像である\cite{bib1}.
+ペアリングは以下のように定義される.
+\[
+  \begin{array}{rccc}
+    e \colon & E & \longrightarrow & E \\
+            & \rotatebox{90}{$\in$} & & \rotatebox{90}{$\in$} \\
+            & (P, Q) & \longmapsto & g^{S(P, Q)}
+  \end{array}
+\]
 
 \section{まとめ}
 
