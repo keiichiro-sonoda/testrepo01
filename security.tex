@@ -8,6 +8,8 @@
 % 画像
 \usepackage[dvipdfmx]{graphicx}
 
+\usepackage{url}
+
 
 \begin{document}
 
@@ -22,8 +24,15 @@
 DH鍵共有では, 2者間でしか鍵の共有ができない.
 複数のメッセージに同じメッセージを送る場合, 
 3者間で鍵共有ができれば便利である.
+
 \section{3者間DH鍵共有}
+3者間DH鍵共有には, 楕円曲線上のペアリングという演算が使われる.
+ペアリングという演算は, 楕円曲線E上の2個の点の組から\cite{bib1}
 
 \section{まとめ}
+
+\begin{thebibliography}{99}
+  \bibitem{bib1}光成 滋生「クラウドを支えるこれからの暗号技術」秀和システム(2015) \url{https://github.com/herumi/ango/raw/master/ango.pdf}
+\end{thebibliography}
 
 \end{document}
