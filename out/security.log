@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.sjis) (TeX Live 2021/W32TeX) (preloaded format=platex 2021.11.4)  30 DEC 2021 19:41
+This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.sjis) (TeX Live 2021/W32TeX) (preloaded format=platex 2021.11.4)  30 DEC 2021 19:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -200,20 +200,20 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 23.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 26.
+(Font)              scaled to size 6.72699pt on input line 25.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 26.
+(Font)              scaled to size 4.805pt on input line 25.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 26.
+(Font)              scaled to size 9.60999pt on input line 25.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 26.
+(Font)              scaled to size 6.72699pt on input line 25.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 4.805pt on input line 26.
+(Font)              scaled to size 4.805pt on input line 25.
 [1
 
 ]
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 74.
+(Font)              scaled to size 9.60999pt on input line 82.
 [2] (out/security.aux) ) 
 Here is how much of TeX's memory you used:
  2032 strings out of 479042
@@ -224,4 +224,4 @@ Here is how much of TeX's memory you used:
  934 hyphenation exceptions out of 8191
  57i,10n,66p,259b,297s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on out/security.dvi (2 pages, 4764 bytes).
+Output written on out/security.dvi (2 pages, 5492 bytes).

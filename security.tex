@@ -22,8 +22,10 @@
 
 \section{はじめに}
 2者間で鍵を共有する手法として, DH鍵共有がある.
+DH鍵共有では素数$p$ (以下は全て${\rm mod}\hspace{3pt} p$とする)
+と生成元$g$を決め, 
 Aさん, Bさん, Cさんがそれぞれが秘密の整数値
-$a, b, c$を持っており, gを生成元とする.
+$a, b, c$を持っている.
 $g^a, g^b, g^c$は公開されるので, 
 Aさん, Bさんの2者間であれば$g^{ab}$を共有できる.
 3者間で同じ値を共有したいとき,
@@ -31,7 +33,7 @@ Aさん, Bさんの2者間であれば$g^{ab}$を共有できる.
 を計算できるが, BさんとCさんは$g^{ab + ac}$
 を計算できない.
 共有できそうな値として, $g^{a + b + c}, g^{abc}$が挙げられる.
-しかし, $g^{a + b + c}$は$g^a \cdot g^b \cdot g^c$で誰でも計算
+このうち$g^{a + b + c}$は$g^a \cdot g^b \cdot g^c$で誰でも計算
 できてしまうので秘密鍵として使えない.
 $g^{abc}$を共有できることが理想だが, 
 それぞれが知っている情報で$g^{abc}$は計算できない.
@@ -40,12 +42,12 @@ $g^{abc}$を共有できることが理想だが,
 \section{3者間DH鍵共有}
 3者間DH鍵共有には, 楕円曲線上のペアリングという演算が使われる.
 ペアリングは, 楕円曲線$E$上の2個の点の組から
-ある有限体$\mathbb{F}_q$への写像である\cite{bib1}.
+ある有限体$\mathbb{F}_p$への写像である\cite{bib1}.
 $P, Q$を$E$上の点, $g$を生成元とすると, ペアリング$e$
 は以下のように定義される.
 \[
   \begin{array}{rccc}
-    e \colon & E \times E & \longrightarrow & \mathbb{F}_q \\
+    e \colon & E \times E & \longrightarrow & \mathbb{F}_p \\
             & \rotatebox{90}{$\in$} & & \rotatebox{90}{$\in$} \\
             & (P, Q) & \longmapsto & g^{S(P, Q)}
   \end{array}
@@ -63,7 +65,13 @@ $S$について以下が成り立つ.
   e(aP, bQ) = g^{S(aP, bQ)} = g^{abS(P, Q)} =
   \left(g^{S(P, Q)}\right)^{ab} = e(P, Q)^{ab}
 \]
-が成り立つ.
+が成り立つ. この性質を使えば, 以下の方法で3者間鍵共有ができる.
+\begin{enumerate}
+  \item 楕円曲線上の$P, Q$を固定してAさん, Bさん, Cさんで共有する.
+  \item それぞれ秘密の整数値$a, b, c$を持ち, $(aP, aQ), (bP, bQ), (cP, cQ)$を公開する.
+  \item Aさんは$e(bP, cQ)^a = e(P, Q)^{abc}$を計算する.
+    Bさん, Cさんも同様に$e(P, Q)^{abc}$を計算する.
+\end{enumerate}
 
 \section{まとめ}
 ペアリングを用いることで, 3者以上との鍵共有ができ,
