@@ -178,7 +178,19 @@ $x \in [0, 2\pi]$のとき$\cos{nx}, \sin{nx} \in [0, 1]$なので,
     \frac{1}{n}\sum_{j=1}^{n}\sum_{k=1}^{n}e_j \otimes e_k
   \right> \\
   &=& \frac{1}{n\sqrt{n}}\sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n
-  \left<e_i \otimes e_j\right> \cdot \left<e_i \otimes e_k\right>
+  \left<e_i, e_j\right> \cdot \left<e_i, e_k\right>
+\end{eqnarray*}
+
+$\Set{e_i}_{i=1}^n$は$\mathbb{C}^n$の正規直交基底なので, 
+$\left<e_i, e_j\right> \cdot \left<e_i, e_k\right>$は
+$e_i = e_j = e_k$のときのみ1になり, それ以外は0となる.
+よって
+
+\begin{eqnarray*}
+  && \frac{1}{n\sqrt{n}}\sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n
+  \left<e_i, e_j\right> \cdot \left<e_i, e_k\right> \\
+  &=& \frac{1}{n\sqrt{n}}\sum_{i=1}^{n}{1}
+  = \frac{1}{n\sqrt{n}} \cdot n = \frac{1}{\sqrt{n}}
 \end{eqnarray*}
 
 \end{document}
