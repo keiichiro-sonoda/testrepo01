@@ -199,7 +199,9 @@ $e_i = e_j = e_k$のときのみ1になり, それ以外は0となる.
   Ty &=& \left(\sum_{i=1}^n\Ket{x_i}\Bra{x_i}\right)y
     = \sum_{i=1}^n\Ket{x_i}\Bra{x_i}y \\
   &=& \sum_{i=1}^n\braket{x_i, y}x_i
-    = \sum_{i=1}^n\Braket{x_i, \hspace{2pt}\sum_{j=1}^n\alpha_i x_j}x_i
+    = \sum_{i=1}^n\Braket{x_i, \hspace{2pt}\sum_{j=1}^n\alpha_i x_j}x_i \\
+  &=& \sum_{i=1}^n\sum_{j=1}^n\alpha_j\Braket{x_i, x_j}x_i
+    = \sum_{i=1}^n\alpha_ix_i = y
 \end{eqnarray*}
 
 \end{document}
