@@ -236,7 +236,6 @@ $\left<\cos{x}, \frac{d}{dx}^*\cos{x}\right>$,
 $\left<\frac{d}{dx}\sin{x}, \cos{x}\right>$,
 $\left<\sin{x}, \frac{d}{dx}^*\cos{x}\right>$
 を計算する.
-
 \begin{eqnarray}
   \left<\frac{d}{dx}\cos{x}, \cos{x}\right>
   = \left<-\sin{x}, \cos{x}\right>
@@ -251,6 +250,49 @@ $\left<\sin{x}, \frac{d}{dx}^*\cos{x}\right>$
     = \pi a_1
   \end{split}
   \label{cadc}
+\end{equation}
+随伴作用素の定義と\eqref{dcc}, \eqref{cadc}より, $b_2=0$である.
+\begin{eqnarray}
+  \left<\frac{d}{dx}\cos{x}, \sin{x}\right>
+  = \left<-\sin{x}, \sin{x}\right>
+  = -\left<\sin{x}, \sin{x}\right>
+  = -\pi \label{dcs}
+\end{eqnarray}
+\begin{equation}
+  \begin{split}
+    \left<\sin{x}, \frac{d}{dx}^*\cos{x}\right>
+    = \left<\sin{x}, a_1\cos{x} + b_1\sin{x}\right> \\
+    = a_1\left<\sin{x}, \cos{x}\right> + b_1\left<\sin{x}, \sin{x}\right>
+    = \pi b_1
+  \end{split}
+  \label{sadc}
+\end{equation}
+随伴作用素の定義と\eqref{dsc}, \eqref{sadc}より, $b_1=1$である.
+以上より, 
+\[
+  \frac{d}{dx}^*\cos{x} = \sin{x}
+\]
+が示された.
+
+$a_2, b_2$を求めるために 
+$\left<\frac{d}{dx}\sin{x}, \sin{x}\right>$,
+$\left<\sin{x}, \frac{d}{dx}^*\sin{x}\right>$,
+$\left<\frac{d}{dx}\cos{x}, \sin{x}\right>$,
+$\left<\cos{x}, \frac{d}{dx}^*\sin{x}\right>$
+を計算する.
+\begin{eqnarray}
+  \left<\frac{d}{dx}\sin{x}, \sin{x}\right>
+  = \left<\cos{x}, \sin{x}\right>
+  = 0 \label{dss}
+\end{eqnarray}
+\begin{equation}
+  \begin{split}
+    \left<\sin{x}, \frac{d}{dx}^*\sin{x}\right>
+    = \left<\sin{x}, a_2\cos{x} + b_2\sin{x}\right> \\
+    = a_2\left<\sin{x}, \cos{x}\right> + b_2\left<\sin{x}, \sin{x}\right>
+    = \pi b_2
+  \end{split}
+  \label{sads}
 \end{equation}
 随伴作用素の定義と\eqref{dcc}, \eqref{cadc}より, $a_1=0$である.
 \begin{eqnarray}
