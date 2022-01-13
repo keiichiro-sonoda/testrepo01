@@ -251,12 +251,11 @@ $\left<\sin{x}, \frac{d}{dx}^*\cos{x}\right>$
   \end{split}
   \label{cadc}
 \end{equation}
-随伴作用素の定義と\eqref{dcc}, \eqref{cadc}より, $b_2=0$である.
+随伴作用素の定義と\eqref{dcc}, \eqref{cadc}より, $a_1=0$である.
 \begin{eqnarray}
-  \left<\frac{d}{dx}\cos{x}, \sin{x}\right>
-  = \left<-\sin{x}, \sin{x}\right>
-  = -\left<\sin{x}, \sin{x}\right>
-  = -\pi \label{dcs}
+  \left<\frac{d}{dx}\sin{x}, \cos{x}\right>
+  = \left<\cos{x}, \cos{x}\right>
+  = \pi \label{dsc}
 \end{eqnarray}
 \begin{equation}
   \begin{split}
@@ -294,22 +293,23 @@ $\left<\cos{x}, \frac{d}{dx}^*\sin{x}\right>$
   \end{split}
   \label{sads}
 \end{equation}
-随伴作用素の定義と\eqref{dcc}, \eqref{cadc}より, $a_1=0$である.
+随伴作用素の定義と\eqref{dss}, \eqref{sads}より, $b_2=0$である.
 \begin{eqnarray}
-  \left<\frac{d}{dx}\sin{x}, \cos{x}\right>
-  = \left<\cos{x}, \cos{x}\right>
-  = \pi \label{dsc}
+  \left<\frac{d}{dx}\cos{x}, \sin{x}\right>
+  = \left<-\sin{x}, \sin{x}\right>
+  = -\left<\sin{x}, \sin{x}\right>
+  = -\pi \label{dcs}
 \end{eqnarray}
 \begin{equation}
   \begin{split}
-    \left<\sin{x}, \frac{d}{dx}^*\cos{x}\right>
-    = \left<\sin{x}, a_1\cos{x} + b_1\sin{x}\right> \\
-    = a_1\left<\sin{x}, \cos{x}\right> + b_1\left<\sin{x}, \sin{x}\right>
-    = \pi b_1
+    \left<\cos{x}, \frac{d}{dx}^*\sin{x}\right>
+    = \left<\cos{x}, a_2\cos{x} + b_2\sin{x}\right> \\
+    = a_2\left<\cos{x}, \cos{x}\right> + b_2\left<\cos{x}, \sin{x}\right>
+    = \pi a_2
   \end{split}
-  \label{sadc}
+  \label{cads}
 \end{equation}
-随伴作用素の定義と\eqref{dsc}, \eqref{sadc}より, $b_1=1$である.
+随伴作用素の定義と\eqref{dcs}, \eqref{cads}より, $a_2=-1$である.
 以上より, 
 \[
   \frac{d}{dx}^*\cos{x} = \sin{x}
