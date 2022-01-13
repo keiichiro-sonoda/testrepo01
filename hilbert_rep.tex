@@ -228,11 +228,11 @@ $e_i = e_j = e_k$のときのみ1になり, それ以外は0となる.
   \\\\
   \left<\sin{x}, \cos{x}\right> &=& \int_0^{2\pi}\sin{x}\cos{x}dx = 0
 \end{eqnarray*}
-となる. $a_1, b_1$を求めるために, 
+となる. $a_1, b_1$を求めるために 
 $\left<\frac{d}{dx}\cos{x}, \cos{x}\right>$,
 $\left<\cos{x}, \frac{d}{dx}^*\cos{x}\right>$,
 $\left<\frac{d}{dx}\sin{x}, \cos{x}\right>$,
-$\left<\sin{x}, \frac{d}{dx}^*\cos{x}\right>$,
+$\left<\sin{x}, \frac{d}{dx}^*\cos{x}\right>$
 を計算する.
 
 \begin{eqnarray}
@@ -241,12 +241,15 @@ $\left<\sin{x}, \frac{d}{dx}^*\cos{x}\right>$,
   = -\left<\sin{x}, \cos{x}\right>
   = 0 \label{dcc}
 \end{eqnarray}
-\begin{eqnarray}
-  && \left<\cos{x}, \frac{d}{dx}^*\cos{x}\right>
-  = \left<\cos{x}, a_1\cos{x} + b_1\sin{x}\right> \notag \\
-  &=& a_1\left<\cos{x}, \cos{x}\right> + b_1\left<\cos{x}, \sin{x}\right>
-  = \pi a_1 \label{cdsc}
-\end{eqnarray}
+\begin{equation}
+  \begin{split}
+    \left<\cos{x}, \frac{d}{dx}^*\cos{x}\right>
+    = \left<\cos{x}, a_1\cos{x} + b_1\sin{x}\right> \\
+    = a_1\left<\cos{x}, \cos{x}\right> + b_1\left<\cos{x}, \sin{x}\right>
+    = \pi a_1
+  \end{split}
+  \label{cdsc}
+\end{equation}
 随伴作用素の定義と\eqref{dcc}, \eqref{cdsc}より, $a_1=0$である.
 
 \end{document}
