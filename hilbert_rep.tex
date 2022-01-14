@@ -211,6 +211,15 @@ $x \in [0, 2\pi]$のとき$\cos{nx}, \sin{nx} \in [0, 1]$なので,
       &=& \frac{1}{2\pi}\left[\frac{1}{m - n}\sin{(m - n)x} - \frac{1}{m + n}\sin{(m + n)x}\right]_{0}^{2\pi}
       = \frac{1}{2\pi}\left(0 - 0\right) = 0
     \end{eqnarray*}
+  \item cosとsin ($m = n$)
+    \begin{eqnarray*}
+      && \left<\frac{1}{\sqrt{\pi}}\cos{nx}, \frac{1}{\sqrt{\pi}}\sin{nx}\right>
+      = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\cos{nx}}\frac{1}{\sqrt{\pi}}\sin{nx}}dx \\
+      &=& \frac{1}{\pi}\int_{0}^{2\pi}{\cos{nx}\sin{nx}}dx
+      = \frac{1}{2\pi}\int_{0}^{2\pi}{\sin{2nx}}dx \\
+      &=& \frac{1}{2\pi}\left[-\frac{1}{2n}\cos{2nx}\right]_0^{2\pi}
+      = -\frac{1}{4n\pi}\left(1 - 1\right) = 0
+    \end{eqnarray*}
   \item cosとsin
     \begin{eqnarray*}
       && \left<\frac{1}{\sqrt{\pi}}\cos{mx}, \frac{1}{\sqrt{\pi}}\sin{nx}\right>
