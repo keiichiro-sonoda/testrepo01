@@ -73,9 +73,9 @@ ${}^\forall x, y \in \mathbb{C}^2$を
   \end{bmatrix}
 \]
 とすると, 内積は
-\begin{equation}
+\begin{equation*}
   \left<x, y\right> = x_1y_1 + x_2y_2
-\end{equation}
+\end{equation*}
 となる.それぞれ左から$H$をかけると
 \begin{eqnarray*}
   Hx &=& \frac{1}{\sqrt{2}} \begin{bmatrix}
@@ -93,7 +93,22 @@ ${}^\forall x, y \in \mathbb{C}^2$を
     y_1 + y_2 \\ y_1 - y_2
   \end{bmatrix}
 \end{eqnarray*}
-となる.
+となり, これらの内積を計算すると
+\begin{equation*}
+  \begin{split}
+    \left<Hx, Hy\right> &= \frac{1}{2}\left(
+      \left(x_1+x_2\right)\left(y_1+y_2\right) + 
+      \left(x_1-x_2\right)\left(y_1-y_2\right)
+    \right) \\
+    &= \frac{1}{2}\left(
+      x_1y_1+x_1y_2+x_2y_1+x_2y_2+
+      x_1y_1-x_1y_2-x_2y_1+x_2y_2
+    \right) \\
+    &= \frac{1}{2}\left(
+      2x_1y_1 + 2x_2y_2
+    \right) = x_1y_1 + x_2y_2 = \left<x, y\right>
+  \end{split}
+\end{equation*}
 
 \section{}
 $\mathbb{C}^3$の正規直交基底の1つとして, 
