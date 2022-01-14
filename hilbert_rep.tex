@@ -63,6 +63,38 @@ ${}^\forall x, y \in \mathbb{C}^2$は$e_1, e_2$
 \]
 が得られる. よって$H$はユニタリ作用素である.
 
+${}^\forall x, y \in \mathbb{C}^2$を
+\[
+  x = \begin{bmatrix}
+    x_1 \\ x_2
+  \end{bmatrix}, 
+  y = \begin{bmatrix}
+    y_1 \\ y_2
+  \end{bmatrix}
+\]
+とすると, 内積は
+\begin{equation}
+  \left<x, y\right> = x_1y_1 + x_2y_2
+\end{equation}
+となる.それぞれ左から$H$をかけると
+\begin{eqnarray*}
+  Hx &=& \frac{1}{\sqrt{2}} \begin{bmatrix}
+    1 & 1 \\ 1 & -1
+  \end{bmatrix} \begin{bmatrix}
+    x_1 \\ x_2
+  \end{bmatrix} = \frac{1}{\sqrt{2}} \begin{bmatrix}
+    x_1 + x_2 \\ x_1 - x_2
+  \end{bmatrix} \\
+  Hy &=& \frac{1}{\sqrt{2}} \begin{bmatrix}
+    1 & 1 \\ 1 & -1
+  \end{bmatrix} \begin{bmatrix}
+    y_1 \\ y_2
+  \end{bmatrix} = \frac{1}{\sqrt{2}} \begin{bmatrix}
+    y_1 + y_2 \\ y_1 - y_2
+  \end{bmatrix}
+\end{eqnarray*}
+となる.
+
 \section{}
 $\mathbb{C}^3$の正規直交基底の1つとして, 
 \[
