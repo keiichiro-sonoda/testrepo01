@@ -75,7 +75,7 @@ ${}^\forall x, y \in \mathbb{C}^2$を$x_1, x_2, y_1, y_2 \in \mathbb{C}$
 \]
 とすると, 内積は
 \begin{equation*}
-  \left<x, y\right> = x_1y_1 + x_2y_2
+  \left<x, y\right> = \overline{x_1}y_1 + \overline{x_2}y_2
 \end{equation*}
 となる. $x, y$に左から$H$をかけると
 \begin{eqnarray*}
@@ -98,16 +98,19 @@ ${}^\forall x, y \in \mathbb{C}^2$を$x_1, x_2, y_1, y_2 \in \mathbb{C}$
 \begin{equation*}
   \begin{split}
     \left<Hx, Hy\right> &= \frac{1}{2}\left(
-      \left(x_1+x_2\right)\left(y_1+y_2\right) + 
-      \left(x_1-x_2\right)\left(y_1-y_2\right)
+      \overline{\left(x_1+x_2\right)}\left(y_1+y_2\right) + 
+      \overline{\left(x_1-x_2\right)}\left(y_1-y_2\right)
     \right) \\
     &= \frac{1}{2}\left(
-      x_1y_1+x_1y_2+x_2y_1+x_2y_2+
-      x_1y_1-x_1y_2-x_2y_1+x_2y_2
+      \overline{x_1}y_1+\overline{x_1}y_2
+      +\overline{x_2}y_1+\overline{x_2}y_2
+      +\overline{x_1}y_1-\overline{x_1}y_2
+      -\overline{x_2}y_1+\overline{x_2}y_2
     \right) \\
     &= \frac{1}{2}\left(
-      2x_1y_1 + 2x_2y_2
-    \right) = x_1y_1 + x_2y_2 = \left<x, y\right>
+      2\overline{x_1}y_1 + 2\overline{x_2}y_2
+    \right) = \overline{x_1}y_1 + \overline{x_2}y_2
+    = \left<x, y\right>
   \end{split}
 \end{equation*}
 となるので, $H$はユニタリ作用素の条件を満たす.
@@ -220,7 +223,13 @@ $x \in [0, 2\pi]$のとき$\cos{nx}, \sin{nx} \in [0, 1]$なので,
       &=& \frac{1}{2\pi}\left[-\frac{1}{2n}\cos{2nx}\right]_0^{2\pi}
       = -\frac{1}{4n\pi}\left(1 - 1\right) = 0
     \end{eqnarray*}
-  \item cosとsin
+  \item sinとcos ($m = n$)
+    \begin{eqnarray*}
+      && \left<\frac{1}{\sqrt{\pi}}\sin{nx}, \frac{1}{\sqrt{\pi}}\cos{nx}\right>
+      = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\sin{nx}}\frac{1}{\sqrt{\pi}}\cos{nx}}dx \\
+      &=& \frac{1}{\pi}\int_{0}^{2\pi}{\sin{nx}\cos{nx}}dx = 0
+    \end{eqnarray*}
+  \item cosとsin ($m \neq n$)
     \begin{eqnarray*}
       && \left<\frac{1}{\sqrt{\pi}}\cos{mx}, \frac{1}{\sqrt{\pi}}\sin{nx}\right>
       = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\cos{mx}}\frac{1}{\sqrt{\pi}}\sin{nx}}dx \\
@@ -229,7 +238,7 @@ $x \in [0, 2\pi]$のとき$\cos{nx}, \sin{nx} \in [0, 1]$なので,
       &=& \frac{1}{2\pi}\left[-\frac{1}{m + n}\cos{(m + n)x} - \frac{1}{m - n}\cos{(m - n)x}\right]_{0}^{2\pi} \\
       &=& \frac{1}{2\pi}\left(\left(-\frac{1}{m + n} -\frac{1}{m - n}\right)-\left(-\frac{1}{m + n} -\frac{1}{m - n}\right)\right) = 0
     \end{eqnarray*}
-  \item sinとcos
+  \item sinとcos ($m \neq n$)
     \begin{eqnarray*}
       && \left<\frac{1}{\sqrt{\pi}}\sin{mx}, \frac{1}{\sqrt{\pi}}\cos{nx}\right>
       = \int_{0}^{2\pi}{\overline{\frac{1}{\sqrt{\pi}}\sin{mx}}\frac{1}{\sqrt{\pi}}\cos{nx}}dx \\
