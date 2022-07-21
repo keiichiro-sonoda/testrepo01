@@ -29,7 +29,7 @@
 #define encHamCode7_4(msg) (((msg) << 3) | makeParityHamCode7_4(msg))
 
 // ファイルの格納先
-#define path_format "./dat/dat/e_prob%02d.txt"
+#define path_format "./dat/e_prob%02d.txt"
 
 // テスト用のパス
 #define test_path_format "./test/e_prob%02d.txt"
